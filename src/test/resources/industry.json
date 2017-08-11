@@ -1,0 +1,1556 @@
+{
+  "data": {
+    "list": [
+      {
+        "id": 21474836481,
+        "name": "电商平台",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474836581,
+        "name": "综合电商",
+        "available_for_individual": false,
+        "parent_id": 21474836481
+      },
+      {
+        "id": 21474836585,
+        "name": "返利平台",
+        "available_for_individual": false,
+        "parent_id": 21474836481
+      },
+      {
+        "id": 21474836482,
+        "name": "招商加盟",
+        "available_for_individual": true,
+        "parent_id": 0
+      },
+      {
+        "id": 21474836681,
+        "name": "美容减肥",
+        "available_for_individual": false,
+        "parent_id": 21474836482
+      },
+      {
+        "id": 21474836682,
+        "name": "餐饮服务",
+        "available_for_individual": false,
+        "parent_id": 21474836482
+      },
+      {
+        "id": 21474836683,
+        "name": "教育培训",
+        "available_for_individual": true,
+        "parent_id": 21474836482
+      },
+      {
+        "id": 21474836684,
+        "name": "成人用品",
+        "available_for_individual": false,
+        "parent_id": 21474836482
+      },
+      {
+        "id": 21474836685,
+        "name": "医药保健",
+        "available_for_individual": false,
+        "parent_id": 21474836482
+      },
+      {
+        "id": 21474836686,
+        "name": "汽车产品",
+        "available_for_individual": true,
+        "parent_id": 21474836482
+      },
+      {
+        "id": 21474836687,
+        "name": "招商加盟平台",
+        "available_for_individual": false,
+        "parent_id": 21474836482
+      },
+      {
+        "id": 21474836483,
+        "name": "婚恋交友",
+        "available_for_individual": true,
+        "parent_id": 0
+      },
+      {
+        "id": 21474836781,
+        "name": "婚恋交友",
+        "available_for_individual": false,
+        "parent_id": 21474836483
+      },
+      {
+        "id": 21474836782,
+        "name": "婚庆服务",
+        "available_for_individual": true,
+        "parent_id": 21474836483
+      },
+      {
+        "id": 21474836485,
+        "name": "教育培训",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474836981,
+        "name": "学历教育机构",
+        "available_for_individual": false,
+        "parent_id": 21474836485
+      },
+      {
+        "id": 21474836982,
+        "name": "学历教育平台",
+        "available_for_individual": false,
+        "parent_id": 21474836485
+      },
+      {
+        "id": 21474836983,
+        "name": "非学历教育机构",
+        "available_for_individual": false,
+        "parent_id": 21474836485
+      },
+      {
+        "id": 21474836984,
+        "name": "非学历教育平台",
+        "available_for_individual": false,
+        "parent_id": 21474836485
+      },
+      {
+        "id": 21474836486,
+        "name": "金融",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474837081,
+        "name": "股票",
+        "available_for_individual": false,
+        "parent_id": 21474836486
+      },
+      {
+        "id": 21474837082,
+        "name": "基金",
+        "available_for_individual": false,
+        "parent_id": 21474836486
+      },
+      {
+        "id": 21474837083,
+        "name": "证券",
+        "available_for_individual": false,
+        "parent_id": 21474836486
+      },
+      {
+        "id": 21474837084,
+        "name": "期货外汇",
+        "available_for_individual": false,
+        "parent_id": 21474836486
+      },
+      {
+        "id": 21474837085,
+        "name": "银行/银行产品",
+        "available_for_individual": false,
+        "parent_id": 21474836486
+      },
+      {
+        "id": 21474837086,
+        "name": "保险",
+        "available_for_individual": false,
+        "parent_id": 21474836486
+      },
+      {
+        "id": 21474837087,
+        "name": "贵金属",
+        "available_for_individual": false,
+        "parent_id": 21474836486
+      },
+      {
+        "id": 21474837088,
+        "name": "典当",
+        "available_for_individual": false,
+        "parent_id": 21474836486
+      },
+      {
+        "id": 21474837089,
+        "name": "担保",
+        "available_for_individual": false,
+        "parent_id": 21474836486
+      },
+      {
+        "id": 21474837090,
+        "name": "p2p网贷平台",
+        "available_for_individual": false,
+        "parent_id": 21474836486
+      },
+      {
+        "id": 21474837091,
+        "name": "投资咨询",
+        "available_for_individual": false,
+        "parent_id": 21474836486
+      },
+      {
+        "id": 21474837092,
+        "name": "信托",
+        "available_for_individual": false,
+        "parent_id": 21474836486
+      },
+      {
+        "id": 21474837093,
+        "name": "资产管理/交易",
+        "available_for_individual": false,
+        "parent_id": 21474836486
+      },
+      {
+        "id": 21474837094,
+        "name": "融资租赁",
+        "available_for_individual": false,
+        "parent_id": 21474836486
+      },
+      {
+        "id": 21474837095,
+        "name": "现货交易",
+        "available_for_individual": false,
+        "parent_id": 21474836486
+      },
+      {
+        "id": 21474837096,
+        "name": "金融综合平台",
+        "available_for_individual": false,
+        "parent_id": 21474836486
+      },
+      {
+        "id": 21474837098,
+        "name": "第三方支付平台",
+        "available_for_individual": false,
+        "parent_id": 21474836486
+      },
+      {
+        "id": 21474836487,
+        "name": "旅游",
+        "available_for_individual": true,
+        "parent_id": 0
+      },
+      {
+        "id": 21474837181,
+        "name": "酒店住宿",
+        "available_for_individual": true,
+        "parent_id": 21474836487
+      },
+      {
+        "id": 21474837182,
+        "name": "票务预订（除机票外）",
+        "available_for_individual": false,
+        "parent_id": 21474836487
+      },
+      {
+        "id": 21474837183,
+        "name": "机票预订",
+        "available_for_individual": false,
+        "parent_id": 21474836487
+      },
+      {
+        "id": 21474837184,
+        "name": "旅行社",
+        "available_for_individual": false,
+        "parent_id": 21474836487
+      },
+      {
+        "id": 21474837185,
+        "name": "景点",
+        "available_for_individual": false,
+        "parent_id": 21474836487
+      },
+      {
+        "id": 21474837186,
+        "name": "旅游OTA综合平台",
+        "available_for_individual": false,
+        "parent_id": 21474836487
+      },
+      {
+        "id": 21474836488,
+        "name": "护肤彩妆",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474837281,
+        "name": "保养护肤",
+        "available_for_individual": false,
+        "parent_id": 21474836488
+      },
+      {
+        "id": 21474837282,
+        "name": "美发护发",
+        "available_for_individual": false,
+        "parent_id": 21474836488
+      },
+      {
+        "id": 21474837283,
+        "name": "香水",
+        "available_for_individual": false,
+        "parent_id": 21474836488
+      },
+      {
+        "id": 21474837284,
+        "name": "彩妆",
+        "available_for_individual": false,
+        "parent_id": 21474836488
+      },
+      {
+        "id": 21474837285,
+        "name": "功能化妆品",
+        "available_for_individual": false,
+        "parent_id": 21474836488
+      },
+      {
+        "id": 21474836489,
+        "name": "3C数码",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474837381,
+        "name": "电脑周边",
+        "available_for_individual": false,
+        "parent_id": 21474836489
+      },
+      {
+        "id": 21474837382,
+        "name": "手机",
+        "available_for_individual": false,
+        "parent_id": 21474836489
+      },
+      {
+        "id": 21474837383,
+        "name": "相机/DV",
+        "available_for_individual": false,
+        "parent_id": 21474836489
+      },
+      {
+        "id": 21474837384,
+        "name": "网络存储",
+        "available_for_individual": false,
+        "parent_id": 21474836489
+      },
+      {
+        "id": 21474837385,
+        "name": "随身影音",
+        "available_for_individual": false,
+        "parent_id": 21474836489
+      },
+      {
+        "id": 21474837386,
+        "name": "办公设备",
+        "available_for_individual": false,
+        "parent_id": 21474836489
+      },
+      {
+        "id": 21474837387,
+        "name": "电玩学习机",
+        "available_for_individual": false,
+        "parent_id": 21474836489
+      },
+      {
+        "id": 21474836490,
+        "name": "家电",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474837481,
+        "name": "常规大家电",
+        "available_for_individual": false,
+        "parent_id": 21474836490
+      },
+      {
+        "id": 21474837482,
+        "name": "厨房电器",
+        "available_for_individual": false,
+        "parent_id": 21474836490
+      },
+      {
+        "id": 21474837483,
+        "name": "生活电器",
+        "available_for_individual": false,
+        "parent_id": 21474836490
+      },
+      {
+        "id": 21474837484,
+        "name": "影音电器",
+        "available_for_individual": false,
+        "parent_id": 21474836490
+      },
+      {
+        "id": 21474837485,
+        "name": "护理保健",
+        "available_for_individual": false,
+        "parent_id": 21474836490
+      },
+      {
+        "id": 21474837486,
+        "name": "家电配件",
+        "available_for_individual": false,
+        "parent_id": 21474836490
+      },
+      {
+        "id": 21474836491,
+        "name": "食品",
+        "available_for_individual": true,
+        "parent_id": 0
+      },
+      {
+        "id": 21474837581,
+        "name": "零食",
+        "available_for_individual": true,
+        "parent_id": 21474836491
+      },
+      {
+        "id": 21474837582,
+        "name": "有机食品",
+        "available_for_individual": true,
+        "parent_id": 21474836491
+      },
+      {
+        "id": 21474837583,
+        "name": "粮油米面调味品",
+        "available_for_individual": true,
+        "parent_id": 21474836491
+      },
+      {
+        "id": 21474837584,
+        "name": "茶/饮料",
+        "available_for_individual": true,
+        "parent_id": 21474836491
+      },
+      {
+        "id": 21474837585,
+        "name": "水果蔬菜",
+        "available_for_individual": true,
+        "parent_id": 21474836491
+      },
+      {
+        "id": 21474837586,
+        "name": "酒水",
+        "available_for_individual": false,
+        "parent_id": 21474836491
+      },
+      {
+        "id": 21474836492,
+        "name": "服饰",
+        "available_for_individual": true,
+        "parent_id": 0
+      },
+      {
+        "id": 21474837681,
+        "name": "女装",
+        "available_for_individual": true,
+        "parent_id": 21474836492
+      },
+      {
+        "id": 21474837682,
+        "name": "女裤",
+        "available_for_individual": true,
+        "parent_id": 21474836492
+      },
+      {
+        "id": 21474837683,
+        "name": "女裙",
+        "available_for_individual": true,
+        "parent_id": 21474836492
+      },
+      {
+        "id": 21474837684,
+        "name": "男装",
+        "available_for_individual": true,
+        "parent_id": 21474836492
+      },
+      {
+        "id": 21474837685,
+        "name": "男裤",
+        "available_for_individual": true,
+        "parent_id": 21474836492
+      },
+      {
+        "id": 21474837686,
+        "name": "服装配饰",
+        "available_for_individual": true,
+        "parent_id": 21474836492
+      },
+      {
+        "id": 21474837687,
+        "name": "套装",
+        "available_for_individual": true,
+        "parent_id": 21474836492
+      },
+      {
+        "id": 21474836493,
+        "name": "内衣",
+        "available_for_individual": true,
+        "parent_id": 0
+      },
+      {
+        "id": 21474837781,
+        "name": "睡衣",
+        "available_for_individual": true,
+        "parent_id": 21474836493
+      },
+      {
+        "id": 21474837782,
+        "name": "贴身内衣",
+        "available_for_individual": true,
+        "parent_id": 21474836493
+      },
+      {
+        "id": 21474837783,
+        "name": "男士袜类",
+        "available_for_individual": true,
+        "parent_id": 21474836493
+      },
+      {
+        "id": 21474837784,
+        "name": "女士袜类",
+        "available_for_individual": true,
+        "parent_id": 21474836493
+      },
+      {
+        "id": 21474836494,
+        "name": "鞋类",
+        "available_for_individual": true,
+        "parent_id": 0
+      },
+      {
+        "id": 21474837881,
+        "name": "男鞋",
+        "available_for_individual": true,
+        "parent_id": 21474836494
+      },
+      {
+        "id": 21474837882,
+        "name": "女鞋",
+        "available_for_individual": true,
+        "parent_id": 21474836494
+      },
+      {
+        "id": 21474836495,
+        "name": "箱包",
+        "available_for_individual": true,
+        "parent_id": 0
+      },
+      {
+        "id": 21474837981,
+        "name": "女包",
+        "available_for_individual": true,
+        "parent_id": 21474836495
+      },
+      {
+        "id": 21474837982,
+        "name": "男包",
+        "available_for_individual": true,
+        "parent_id": 21474836495
+      },
+      {
+        "id": 21474837983,
+        "name": "功能箱包",
+        "available_for_individual": true,
+        "parent_id": 21474836495
+      },
+      {
+        "id": 21474836496,
+        "name": "运动户外",
+        "available_for_individual": true,
+        "parent_id": 0
+      },
+      {
+        "id": 21474838081,
+        "name": "运动鞋",
+        "available_for_individual": true,
+        "parent_id": 21474836496
+      },
+      {
+        "id": 21474838082,
+        "name": "运动服",
+        "available_for_individual": true,
+        "parent_id": 21474836496
+      },
+      {
+        "id": 21474838083,
+        "name": "户外运动用品",
+        "available_for_individual": true,
+        "parent_id": 21474836496
+      },
+      {
+        "id": 21474838084,
+        "name": "运动包",
+        "available_for_individual": true,
+        "parent_id": 21474836496
+      },
+      {
+        "id": 21474838085,
+        "name": "运动/瑜伽/健身/球迷用品",
+        "available_for_individual": true,
+        "parent_id": 21474836496
+      },
+      {
+        "id": 21474838086,
+        "name": "其他",
+        "available_for_individual": true,
+        "parent_id": 21474836496
+      },
+      {
+        "id": 21474836497,
+        "name": "珠宝手表",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474838181,
+        "name": "珠宝钻石",
+        "available_for_individual": false,
+        "parent_id": 21474836497
+      },
+      {
+        "id": 21474838182,
+        "name": "手表",
+        "available_for_individual": false,
+        "parent_id": 21474836497
+      },
+      {
+        "id": 21474838183,
+        "name": "饰品",
+        "available_for_individual": false,
+        "parent_id": 21474836497
+      },
+      {
+        "id": 21474836498,
+        "name": "医疗机构",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474838281,
+        "name": "医疗科室",
+        "available_for_individual": false,
+        "parent_id": 21474836498
+      },
+      {
+        "id": 21474838282,
+        "name": "心理健康",
+        "available_for_individual": false,
+        "parent_id": 21474836498
+      },
+      {
+        "id": 21474836499,
+        "name": "药品",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474838381,
+        "name": "药品交易",
+        "available_for_individual": false,
+        "parent_id": 21474836499
+      },
+      {
+        "id": 21474838382,
+        "name": "药品生产研发",
+        "available_for_individual": false,
+        "parent_id": 21474836499
+      },
+      {
+        "id": 21474838383,
+        "name": "药品信息",
+        "available_for_individual": false,
+        "parent_id": 21474836499
+      },
+      {
+        "id": 21474836500,
+        "name": "医疗器械",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474838481,
+        "name": "医疗器械生产",
+        "available_for_individual": false,
+        "parent_id": 21474836500
+      },
+      {
+        "id": 21474838482,
+        "name": "医疗器械销售",
+        "available_for_individual": false,
+        "parent_id": 21474836500
+      },
+      {
+        "id": 21474838483,
+        "name": "假肢生产装配",
+        "available_for_individual": false,
+        "parent_id": 21474836500
+      },
+      {
+        "id": 21474836501,
+        "name": "医疗健康",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474838581,
+        "name": "保健用品",
+        "available_for_individual": false,
+        "parent_id": 21474836501
+      },
+      {
+        "id": 21474838582,
+        "name": "保健食品",
+        "available_for_individual": false,
+        "parent_id": 21474836501
+      },
+      {
+        "id": 21474838583,
+        "name": "美容减肥保健用品",
+        "available_for_individual": false,
+        "parent_id": 21474836501
+      },
+      {
+        "id": 21474838584,
+        "name": "美容减肥保健食品",
+        "available_for_individual": false,
+        "parent_id": 21474836501
+      },
+      {
+        "id": 21474836502,
+        "name": "商务服务",
+        "available_for_individual": true,
+        "parent_id": 0
+      },
+      {
+        "id": 21474838681,
+        "name": "策划咨询",
+        "available_for_individual": true,
+        "parent_id": 21474836502
+      },
+      {
+        "id": 21474838682,
+        "name": "代理",
+        "available_for_individual": false,
+        "parent_id": 21474836502
+      },
+      {
+        "id": 21474838683,
+        "name": "会计税务",
+        "available_for_individual": false,
+        "parent_id": 21474836502
+      },
+      {
+        "id": 21474838684,
+        "name": "留学中介",
+        "available_for_individual": false,
+        "parent_id": 21474836502
+      },
+      {
+        "id": 21474838685,
+        "name": "移民中介",
+        "available_for_individual": false,
+        "parent_id": 21474836502
+      },
+      {
+        "id": 21474838686,
+        "name": "调查",
+        "available_for_individual": false,
+        "parent_id": 21474836502
+      },
+      {
+        "id": 21474838687,
+        "name": "拍卖",
+        "available_for_individual": false,
+        "parent_id": 21474836502
+      },
+      {
+        "id": 21474838688,
+        "name": "公关",
+        "available_for_individual": false,
+        "parent_id": 21474836502
+      },
+      {
+        "id": 21474838689,
+        "name": "配音",
+        "available_for_individual": true,
+        "parent_id": 21474836502
+      },
+      {
+        "id": 21474838690,
+        "name": "翻译",
+        "available_for_individual": true,
+        "parent_id": 21474836502
+      },
+      {
+        "id": 21474838691,
+        "name": "会展",
+        "available_for_individual": true,
+        "parent_id": 21474836502
+      },
+      {
+        "id": 21474836503,
+        "name": "工农业",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474838781,
+        "name": "化工和材料",
+        "available_for_individual": false,
+        "parent_id": 21474836503
+      },
+      {
+        "id": 21474838782,
+        "name": "机械零件",
+        "available_for_individual": false,
+        "parent_id": 21474836503
+      },
+      {
+        "id": 21474838783,
+        "name": "农林牧渔",
+        "available_for_individual": false,
+        "parent_id": 21474836503
+      },
+      {
+        "id": 21474838784,
+        "name": "兽医兽药",
+        "available_for_individual": false,
+        "parent_id": 21474836503
+      },
+      {
+        "id": 21474836504,
+        "name": "母婴儿童",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474838881,
+        "name": "育儿网站",
+        "available_for_individual": false,
+        "parent_id": 21474836504
+      },
+      {
+        "id": 21474838882,
+        "name": "童装",
+        "available_for_individual": false,
+        "parent_id": 21474836504
+      },
+      {
+        "id": 21474838883,
+        "name": "孕妇用品",
+        "available_for_individual": false,
+        "parent_id": 21474836504
+      },
+      {
+        "id": 21474838884,
+        "name": "宝宝用品",
+        "available_for_individual": false,
+        "parent_id": 21474836504
+      },
+      {
+        "id": 21474838885,
+        "name": "宝宝食品",
+        "available_for_individual": false,
+        "parent_id": 21474836504
+      },
+      {
+        "id": 21474838886,
+        "name": "儿童玩具",
+        "available_for_individual": false,
+        "parent_id": 21474836504
+      },
+      {
+        "id": 21474836505,
+        "name": "文化玩乐",
+        "available_for_individual": true,
+        "parent_id": 0
+      },
+      {
+        "id": 21474838981,
+        "name": "爱好收藏",
+        "available_for_individual": true,
+        "parent_id": 21474836505
+      },
+      {
+        "id": 21474838982,
+        "name": "书籍杂志",
+        "available_for_individual": true,
+        "parent_id": 21474836505
+      },
+      {
+        "id": 21474838983,
+        "name": "音像影视",
+        "available_for_individual": true,
+        "parent_id": 21474836505
+      },
+      {
+        "id": 21474838984,
+        "name": "乐器",
+        "available_for_individual": true,
+        "parent_id": 21474836505
+      },
+      {
+        "id": 21474838985,
+        "name": "鲜花园艺",
+        "available_for_individual": true,
+        "parent_id": 21474836505
+      },
+      {
+        "id": 21474838986,
+        "name": "宠物",
+        "available_for_individual": true,
+        "parent_id": 21474836505
+      },
+      {
+        "id": 21474838987,
+        "name": "个性定制",
+        "available_for_individual": true,
+        "parent_id": 21474836505
+      },
+      {
+        "id": 21474838988,
+        "name": "网络服务",
+        "available_for_individual": false,
+        "parent_id": 21474836505
+      },
+      {
+        "id": 21474838989,
+        "name": "动漫游戏周边/桌游",
+        "available_for_individual": true,
+        "parent_id": 21474836505
+      },
+      {
+        "id": 21474838990,
+        "name": "电台电视台",
+        "available_for_individual": false,
+        "parent_id": 21474836505
+      },
+      {
+        "id": 21474836506,
+        "name": "本地生活",
+        "available_for_individual": true,
+        "parent_id": 0
+      },
+      {
+        "id": 21474839081,
+        "name": "家政",
+        "available_for_individual": false,
+        "parent_id": 21474836506
+      },
+      {
+        "id": 21474839082,
+        "name": "餐饮",
+        "available_for_individual": false,
+        "parent_id": 21474836506
+      },
+      {
+        "id": 21474839083,
+        "name": "美容美发",
+        "available_for_individual": true,
+        "parent_id": 21474836506
+      },
+      {
+        "id": 21474839084,
+        "name": "运动健身",
+        "available_for_individual": true,
+        "parent_id": 21474836506
+      },
+      {
+        "id": 21474839085,
+        "name": "休闲娱乐",
+        "available_for_individual": false,
+        "parent_id": 21474836506
+      },
+      {
+        "id": 21474839086,
+        "name": "面包蛋糕",
+        "available_for_individual": false,
+        "parent_id": 21474836506
+      },
+      {
+        "id": 21474839087,
+        "name": "星座/算命",
+        "available_for_individual": false,
+        "parent_id": 21474836506
+      },
+      {
+        "id": 21474839088,
+        "name": "电影演出",
+        "available_for_individual": false,
+        "parent_id": 21474836506
+      },
+      {
+        "id": 21474839089,
+        "name": "卡券消费",
+        "available_for_individual": false,
+        "parent_id": 21474836506
+      },
+      {
+        "id": 21474839090,
+        "name": "生活超市",
+        "available_for_individual": false,
+        "parent_id": 21474836506
+      },
+      {
+        "id": 21474839091,
+        "name": "车辆养护",
+        "available_for_individual": false,
+        "parent_id": 21474836506
+      },
+      {
+        "id": 21474839092,
+        "name": "开锁",
+        "available_for_individual": false,
+        "parent_id": 21474836506
+      },
+      {
+        "id": 21474839093,
+        "name": "快递服务",
+        "available_for_individual": false,
+        "parent_id": 21474836506
+      },
+      {
+        "id": 21474839094,
+        "name": "电视购物类",
+        "available_for_individual": false,
+        "parent_id": 21474836506
+      },
+      {
+        "id": 21474839095,
+        "name": "物业服务",
+        "available_for_individual": false,
+        "parent_id": 21474836506
+      },
+      {
+        "id": 21474836507,
+        "name": "法律服务",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474839181,
+        "name": "司法鉴定",
+        "available_for_individual": false,
+        "parent_id": 21474836507
+      },
+      {
+        "id": 21474839182,
+        "name": "律师事务所",
+        "available_for_individual": false,
+        "parent_id": 21474836507
+      },
+      {
+        "id": 21474839183,
+        "name": "公证",
+        "available_for_individual": false,
+        "parent_id": 21474836507
+      },
+      {
+        "id": 21474836508,
+        "name": "房地产",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474839281,
+        "name": "房产买卖",
+        "available_for_individual": false,
+        "parent_id": 21474836508
+      },
+      {
+        "id": 21474839282,
+        "name": "房产出租",
+        "available_for_individual": false,
+        "parent_id": 21474836508
+      },
+      {
+        "id": 21474839283,
+        "name": "房产中介",
+        "available_for_individual": false,
+        "parent_id": 21474836508
+      },
+      {
+        "id": 21474836509,
+        "name": "交通",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474839381,
+        "name": "车辆交易",
+        "available_for_individual": false,
+        "parent_id": 21474836509
+      },
+      {
+        "id": 21474839382,
+        "name": "汽车用品",
+        "available_for_individual": false,
+        "parent_id": 21474836509
+      },
+      {
+        "id": 21474839383,
+        "name": "二手车",
+        "available_for_individual": false,
+        "parent_id": 21474836509
+      },
+      {
+        "id": 21474839384,
+        "name": "救援陪练类",
+        "available_for_individual": false,
+        "parent_id": 21474836509
+      },
+      {
+        "id": 21474839385,
+        "name": "航空服务",
+        "available_for_individual": false,
+        "parent_id": 21474836509
+      },
+      {
+        "id": 21474839386,
+        "name": "铁路服务",
+        "available_for_individual": false,
+        "parent_id": 21474836509
+      },
+      {
+        "id": 21474839387,
+        "name": "公路运输",
+        "available_for_individual": false,
+        "parent_id": 21474836509
+      },
+      {
+        "id": 21474836510,
+        "name": "营销/广告/包装",
+        "available_for_individual": true,
+        "parent_id": 0
+      },
+      {
+        "id": 21474839481,
+        "name": "广告代理",
+        "available_for_individual": false,
+        "parent_id": 21474836510
+      },
+      {
+        "id": 21474839482,
+        "name": "营销机构",
+        "available_for_individual": false,
+        "parent_id": 21474836510
+      },
+      {
+        "id": 21474839483,
+        "name": "印刷",
+        "available_for_individual": true,
+        "parent_id": 21474836510
+      },
+      {
+        "id": 21474839484,
+        "name": "广告包装",
+        "available_for_individual": false,
+        "parent_id": 21474836510
+      },
+      {
+        "id": 21474836511,
+        "name": "节能环保",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474839581,
+        "name": "污染处理",
+        "available_for_individual": false,
+        "parent_id": 21474836511
+      },
+      {
+        "id": 21474839582,
+        "name": "废旧回收",
+        "available_for_individual": false,
+        "parent_id": 21474836511
+      },
+      {
+        "id": 21474839583,
+        "name": "节能设备",
+        "available_for_individual": false,
+        "parent_id": 21474836511
+      },
+      {
+        "id": 21474839584,
+        "name": "环保设备",
+        "available_for_individual": false,
+        "parent_id": 21474836511
+      },
+      {
+        "id": 21474839585,
+        "name": "环境评测",
+        "available_for_individual": false,
+        "parent_id": 21474836511
+      },
+      {
+        "id": 21474836512,
+        "name": "安全安保",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474839681,
+        "name": "防盗报警",
+        "available_for_individual": false,
+        "parent_id": 21474836512
+      },
+      {
+        "id": 21474839682,
+        "name": "保安安保",
+        "available_for_individual": false,
+        "parent_id": 21474836512
+      },
+      {
+        "id": 21474839683,
+        "name": "警用装备",
+        "available_for_individual": false,
+        "parent_id": 21474836512
+      },
+      {
+        "id": 21474839684,
+        "name": "门禁考勤",
+        "available_for_individual": false,
+        "parent_id": 21474836512
+      },
+      {
+        "id": 21474839685,
+        "name": "交通消防",
+        "available_for_individual": false,
+        "parent_id": 21474836512
+      },
+      {
+        "id": 21474836513,
+        "name": "成人用品",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474839781,
+        "name": "成人用品",
+        "available_for_individual": false,
+        "parent_id": 21474836513
+      },
+      {
+        "id": 21474836514,
+        "name": "公益",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474839881,
+        "name": "公益",
+        "available_for_individual": false,
+        "parent_id": 21474836514
+      },
+      {
+        "id": 21474836515,
+        "name": "家居建材",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474839981,
+        "name": "家装主材",
+        "available_for_individual": false,
+        "parent_id": 21474836515
+      },
+      {
+        "id": 21474839982,
+        "name": "住宅家具",
+        "available_for_individual": false,
+        "parent_id": 21474836515
+      },
+      {
+        "id": 21474839983,
+        "name": "家居饰品",
+        "available_for_individual": false,
+        "parent_id": 21474836515
+      },
+      {
+        "id": 21474839984,
+        "name": "家纺布艺",
+        "available_for_individual": false,
+        "parent_id": 21474836515
+      },
+      {
+        "id": 21474839985,
+        "name": "五金电工",
+        "available_for_individual": false,
+        "parent_id": 21474836515
+      },
+      {
+        "id": 21474839986,
+        "name": "装修设计",
+        "available_for_individual": false,
+        "parent_id": 21474836515
+      },
+      {
+        "id": 21474836516,
+        "name": "虚拟",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474840081,
+        "name": "网上营业厅",
+        "available_for_individual": false,
+        "parent_id": 21474836516
+      },
+      {
+        "id": 21474840082,
+        "name": "游戏",
+        "available_for_individual": false,
+        "parent_id": 21474836516
+      },
+      {
+        "id": 21474840083,
+        "name": "无线增值",
+        "available_for_individual": false,
+        "parent_id": 21474836516
+      },
+      {
+        "id": 21474836517,
+        "name": "日用百货",
+        "available_for_individual": true,
+        "parent_id": 0
+      },
+      {
+        "id": 21474840181,
+        "name": "收纳整理",
+        "available_for_individual": true,
+        "parent_id": 21474836517
+      },
+      {
+        "id": 21474840182,
+        "name": "家居日用",
+        "available_for_individual": true,
+        "parent_id": 21474836517
+      },
+      {
+        "id": 21474840183,
+        "name": "餐饮用具",
+        "available_for_individual": true,
+        "parent_id": 21474836517
+      },
+      {
+        "id": 21474840184,
+        "name": "洗护用具",
+        "available_for_individual": true,
+        "parent_id": 21474836517
+      },
+      {
+        "id": 21474836518,
+        "name": "彩票",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474840281,
+        "name": "彩票",
+        "available_for_individual": false,
+        "parent_id": 21474836518
+      },
+      {
+        "id": 21474836519,
+        "name": "政府机关",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474840381,
+        "name": "政府机关",
+        "available_for_individual": false,
+        "parent_id": 21474836519
+      },
+      {
+        "id": 21474836520,
+        "name": "网站门户",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474840481,
+        "name": "新闻门户资讯社区",
+        "available_for_individual": false,
+        "parent_id": 21474836520
+      },
+      {
+        "id": 21474836521,
+        "name": "汽车",
+        "available_for_individual": false,
+        "parent_id": 0
+      },
+      {
+        "id": 21474840586,
+        "name": "出行服务",
+        "available_for_individual": false,
+        "parent_id": 21474836521
+      },
+      {
+        "id": 21474836522,
+        "name": "网络工具",
+        "available_for_individual": true,
+        "parent_id": 0
+      },
+      {
+        "id": 21474840681,
+        "name": "办公软件",
+        "available_for_individual": true,
+        "parent_id": 21474836522
+      },
+      {
+        "id": 21474840682,
+        "name": "系统软件",
+        "available_for_individual": false,
+        "parent_id": 21474836522
+      },
+      {
+        "id": 21474840683,
+        "name": "wifi",
+        "available_for_individual": false,
+        "parent_id": 21474836522
+      },
+      {
+        "id": 21474840684,
+        "name": "视频音乐阅读",
+        "available_for_individual": false,
+        "parent_id": 21474836522
+      },
+      {
+        "id": 21474840685,
+        "name": "美图美拍",
+        "available_for_individual": true,
+        "parent_id": 21474836522
+      },
+      {
+        "id": 21474840686,
+        "name": "天气日历",
+        "available_for_individual": true,
+        "parent_id": 21474836522
+      },
+      {
+        "id": 21474840687,
+        "name": "社交",
+        "available_for_individual": false,
+        "parent_id": 21474836522
+      },
+      {
+        "id": 21474840688,
+        "name": "网络电话",
+        "available_for_individual": false,
+        "parent_id": 21474836522
+      },
+      {
+        "id": 21474840689,
+        "name": "网络直播",
+        "available_for_individual": false,
+        "parent_id": 21474836522
+      },
+      {
+        "id": 21474840690,
+        "name": "教育工具",
+        "available_for_individual": false,
+        "parent_id": 21474836522
+      },
+      {
+        "id": 21474836523,
+        "name": "游戏",
+        "available_for_individual": true,
+        "parent_id": 0
+      },
+      {
+        "id": 21474840781,
+        "name": "角色扮演",
+        "available_for_individual": true,
+        "parent_id": 21474836523
+      },
+      {
+        "id": 21474840782,
+        "name": "策略",
+        "available_for_individual": true,
+        "parent_id": 21474836523
+      },
+      {
+        "id": 21474840783,
+        "name": "体育",
+        "available_for_individual": true,
+        "parent_id": 21474836523
+      },
+      {
+        "id": 21474840784,
+        "name": "棋牌",
+        "available_for_individual": true,
+        "parent_id": 21474836523
+      },
+      {
+        "id": 21474840785,
+        "name": "音乐",
+        "available_for_individual": true,
+        "parent_id": 21474836523
+      },
+      {
+        "id": 21474840786,
+        "name": "模拟经营",
+        "available_for_individual": true,
+        "parent_id": 21474836523
+      },
+      {
+        "id": 21474840787,
+        "name": "休闲",
+        "available_for_individual": true,
+        "parent_id": 21474836523
+      },
+      {
+        "id": 21474840788,
+        "name": "益智",
+        "available_for_individual": true,
+        "parent_id": 21474836523
+      },
+      {
+        "id": 21474840789,
+        "name": "射击",
+        "available_for_individual": true,
+        "parent_id": 21474836523
+      },
+      {
+        "id": 21474840790,
+        "name": "养成",
+        "available_for_individual": true,
+        "parent_id": 21474836523
+      },
+      {
+        "id": 21474840791,
+        "name": "格斗",
+        "available_for_individual": true,
+        "parent_id": 21474836523
+      },
+      {
+        "id": 21474840792,
+        "name": "冒险",
+        "available_for_individual": true,
+        "parent_id": 21474836523
+      },
+      {
+        "id": 21474840793,
+        "name": "卡牌",
+        "available_for_individual": true,
+        "parent_id": 21474836523
+      },
+      {
+        "id": 21474840794,
+        "name": "竞速",
+        "available_for_individual": true,
+        "parent_id": 21474836523
+      },
+      {
+        "id": 21474840795,
+        "name": "综合游戏平台",
+        "available_for_individual": false,
+        "parent_id": 21474836523
+      }
+    ]
+  },
+  "code": 0,
+  "message": ""
+}

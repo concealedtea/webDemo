@@ -1,0 +1,234 @@
+.custombox-modal-wrapper{text-align: left}
+.box-input{width: 400px;}
+.box-must{position: absolute;top: 0;left: 0;height: 34px;line-height: 34px;display: inline-block;vertical-align: top;font-size: 38px;color: red;  }
+.name-icon{position: absolute;right: 10px;top: 14px}
+.ellipsis{text-overflow:ellipsis; overflow:hidden; white-space:nowrap; width:250px;}
+.logo-top{width: 60px;height: 60px;position: absolute;top: 0;left: -60px;background-image: url("../image/login.png");background-size: 100% 100%;}
+/*page-index*/
+.page-index .card-box{padding: 20px 10px;}
+/*.page-strategy*/
+.page-strategy .card-box{padding: 7px;margin-bottom: 15px;}
+.page-strategy .widget-box-1 h4{line-height: 15px; font-size: 15px;}
+.page-strategy .widget-box-1 h2{margin: 15px 5px;font-size: 24px;line-height: 24px}
+.tabs-strategy .tabs{margin: 0}
+.tabs-strategy .nav.nav-tabs{box-shadow: 0 0px 0px;}
+.tabs-strategy  .tab-content{box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05) inset;}
+.targe{cursor: default !important;margin-right: 6px !important; word-break:break-all;display: inline-block;}
+a.btn-operate-name{cursor:pointer;margin-right: 5px;}
+a.btn-operate-name:hover,
+a.btn-operate-name.active,
+.portlet .portlet-heading a.btn-operate:hover,
+.portlet .portlet-heading a.btn-operate:focus {color:#5fbeaa}
+a.btn-operate,
+a.btn-operate:hover,
+a.btn-operate.active{cursor:pointer;margin-right: 5px;color:#5fbeaa}
+
+/*page-agency*/
+/*.page-agency .agency_operate,
+.page-agency .agency_operate:hover,
+.page-agency .agency_operate:focus{color:#5fbeaa;margin-right: 5px;}*/
+/*page-strategydetail*/
+.page-strategydetail  #tb_ListCreative .radio{padding-top: 0px;min-height: 20px;}
+.page-strategydetail .table-striped > tbody > tr:nth-of-type(odd){background-color: #ffffff;}
+.page-strategydetail .table-striped > tbody > .trshow:nth-of-type(odd){background-color: #f4f8fb;}
+.page-strategydetail .table-striped > tbody > .trshow:nth-of-type(even){background-color: #ffffff;}
+.page-strategydetail table.dataTable tbody tr.trshow:hover{background-color: #eef7fb; }
+.page-strategydetail .strategy-bid-info{width: 300px}
+.page-strategydetail .strategy-bid-info .bid-num{color: red;font-size: 25px;}
+.page-strategydetail .data-nothing{font-size: 16px;}
+.page-strategydetail .data-nothing a{color: #5fbeaa;font-weight: bold;}
+.page-strategydetail .data-nothing a:hover{  text-decoration: underline;color: #5fbeaa;}
+/*page-audience*/
+.page-audience .radio-inline{cursor: default;}
+/*login*/
+.account-pages {
+    /*background: url("../image/banner.jpg");*/
+    background-color: #f4f4f4;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+.wrapper-page {
+    margin: 10% auto 0;
+    position: relative;
+    width: 420px;
+}
+.wrapper-page .card-box {
+    border: 1px solid rgba(54, 64, 74, 0.1);
+}
+.page-login .parsley-error-icon {
+    position: absolute;
+    top: 12px;
+    right: -4px;
+}
+
+
+/* time target tony add start */
+.quick_picker td {
+    padding: 0 12px 0 12px;
+    text-align: center;
+    cursor: pointer;
+    width: 65px;
+}
+.quick_picker a, .quick_picker a:hover, .quick_picker a:focus {
+    color: #5fbeaa;
+    cursor: pointer;
+    font-size:12px;
+}
+.quick_picker a:hover {
+    text-decoration: underline;
+}
+#TimePicker {
+    width: 100%;
+    postion: relative;
+    border-bottom: 1px solid #eee;
+    font-size: 12px;
+    margin-top: 20px;
+}
+#TimePicker th {
+    height: 40px !important;
+}
+#TimePicker td {
+    background-position: 5px 5px;
+}
+#TimePicker thead tr {
+    border: 1px solid #eee;
+    border-left: 0;
+    border-right: 0;
+}
+#TimePicker thead tr th:first-child span {
+    border-right: 1px solid #eee;
+    display: block;
+    height: 100%;
+    width: 80%;
+}
+#TimePicker th, #TimePicker td {
+    height: 30px;
+    width: 26px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    color: #666;
+}
+#TimePicker tbody tr td span {
+    display: block;
+    width: 80%;
+    height: 100%;
+    line-height: 30px;
+    border-right: 1px solid #eee;
+    padding-left: 15px;
+}
+/*.time_hover {
+    background-image: url("../image/time_hover.png")!important;
+    color: #fff;
+}
+.time_opted {
+    background-image: url("../image/time_opted.png")!important;
+    color: #fff;
+}
+.time_normal {
+    background-image: url("../image/time_opt.png");
+}*/
+.time {
+    font-size: 12px;
+    background-repeat: no-repeat;
+    background-position: 2.5px 5px;
+    cursor: pointer;
+}
+.time_normal i{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 20px;
+    border: 1px solid #dedede;
+    background-color: #F9F9F9;
+}
+.time_hover i{
+    border-color: #5fbeaa;
+    background-color: #ffffff;
+}
+.time_opted i{
+    border-color:#5fbeaa;
+    background-color: #5fbeaa;
+}
+
+#tips {
+    margin: 20px 0 10px 0;
+    padding-left: 15px;
+}
+/*#tips>img {
+    transform: scale(.9);
+    -webkit-transform: scale(.9);
+    margin-right: 6px;
+}*/
+#tips .time{
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    margin-right: 3px;
+    vertical-align: sub;
+}
+.time_tools ul {
+    padding: 0;
+    margin: 0;
+}
+.select_tools {
+    color: #469FEA;
+    float: right;
+    position: relative;
+    bottom: 15px;
+    right: 10px;
+}
+.select_tools li {
+    float: left;
+    list-style-type: none;
+    margin-left: 20px;
+    cursor: pointer;
+    color: #5fbeaa;
+}
+.select_tools li:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+/* time target tony add end */
+/* geo target tony add */
+.geo_block {
+    width:48%;
+    margin-top:15px;
+}
+.geo_text {
+    width: 100%;
+    padding-left:5px;
+    height: 28px;
+}
+.geo_border_color {
+    border:1px solid #E3E3E3;
+}
+.geo_border {
+    padding:10px;
+    overflow-y: scroll;
+    height: 350px;
+}
+.tree-selected {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.tree-selected li{
+    height: 24px;
+}
+.tree-selected li i:hover {
+    cursor: pointer;
+}
+#AudienceTarget .checkbox,#DeviceTarget .checkbox {
+    margin-top: 2px;
+    margin-bottom: 0px;
+}
+#AudienceTarget .checkbox + .checkbox,#DeviceTarget .checkbox + .checkbox { margin-top: 2px;}
+
+/*geo target tony end */
+
+/* advertiser list start */
+/*#tb_AdvertiserList tr:hover,#tb_CampaignList tr:hover {padding: 0;background-color:#eef7fb;}*/
+
+/* advertiser list end */

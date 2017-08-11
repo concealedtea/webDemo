@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rptStrategy">
+
+    <select id="rpt:strategy:daily:select" resultType="report">
+        select settled_time,sid,view_count,click_count,ROUND(cost/#{markup,jdbcType=DOUBLE},2) as cost
+        from rpt_strategy_daily
+        <where>
+            1=1
+            <if test="sid != null"> and sid = #{sid} </if>
+            <if test="current != null"> and settled_time = #{current} </if>
+            <if test="start != null"><![CDATA[ and settled_time > #{start} ]]></if>
+            <if test="end != null"><![CDATA[ and settled_time <= #{end} ]]></if>
+        </where>
+        ORDER BY settled_time ASC ;
+    </select>
+
+    <select id="rpt:campaign:strategy:daily:list" resultType="report">
+        select sid, sum(view_count) as view_count,sum(click_count) as click_count,sum(cost) as cost
+        from (
+        <if test="todayOnly != null">
+            <include refid="selectToday:list"/>
+        </if>
+
+        <if test="agoOnly != null">
+            select sid, sum(view_count) as view_count , sum(click_count) as click_count, sum(ROUND(cost / #{markup, jdbcType=DOUBLE},2)) as cost
+            from rpt_strategy_daily
+            where sid in (${sids}) and settled_time &lt;= #{endDate} and settled_time &gt;= #{startDate} group by sid
+        </if>
+
+        <if test="allHave != null">
+            select sid, sum(view_count) as view_count , sum(click_count) as click_count, sum(ROUND(cost / #{markup, jdbcType=DOUBLE},2)) as cost
+            from rpt_strategy_daily
+            where sid in (${sids}) and settled_time &lt; DATE_FORMAT(NOW(),'%Y-%m-%d') and settled_time &gt;= #{startDate} group by sid
+            UNION ALL
+            <include refid="selectToday:list"/>
+        </if>
+        ) a
+        group by sid
+        order by view_count desc
+    </select>
+
+    <select id="rpt:campaign:strategy:daily:total" resultType="report">
+        select sum(view_count) as view_count,sum(click_count) as click_count,sum(cost) as cost
+        from (
+            <if test="todayOnly != null">
+                <include refid="selectToday"/>
+            </if>
+
+            <if test="agoOnly != null">
+                select sum(view_count) as view_count , sum(click_count) as click_count, sum(ROUND(cost / #{markup, jdbcType=DOUBLE},2)) as cost
+                from rpt_strategy_daily
+                where sid in (${sids}) and settled_time &lt;= #{endDate} and settled_time &gt;= #{startDate}
+            </if>
+
+            <if test="allHave != null">
+                select sum(view_count) as view_count , sum(click_count) as click_count, sum(ROUND(cost / #{markup, jdbcType=DOUBLE},2)) as cost
+                from rpt_strategy_daily
+                where sid in (${sids}) and settled_time &lt; DATE_FORMAT(NOW(),'%Y-%m-%d') and settled_time &gt;= #{startDate}
+                UNION ALL
+                <include refid="selectToday"/>
+            </if>
+            ) a
+        order by view_count desc
+    </select>
+
+    <sql id="selectToday:list">
+        select sid, sum(view_count) as view_count , sum(click_count) as click_count, sum(ROUND(cost / #{markup, jdbcType=DOUBLE},2)) as cost
+        from rpt_strategy_hourly
+        where sid in (${sids}) and settled_time = DATE_FORMAT(NOW(),'%Y-%m-%d') group by sid
+    </sql>
+
+    <sql id="selectToday">
+        select sum(view_count) as view_count , sum(click_count) as click_count, sum(ROUND(cost / #{markup, jdbcType=DOUBLE},2)) as cost
+        from rpt_strategy_hourly
+        where sid in (${sids}) and settled_time = DATE_FORMAT(NOW(),'%Y-%m-%d')
+    </sql>
+
+    <select id="rpt:strategy:hourly:select" resultType="report">
+        select settled_time,sid,`hour`,view_count,click_count,ROUND(cost/#{markup,jdbcType=DOUBLE},2) as cost
+        from rpt_strategy_hourly
+        <where>
+            1=1
+            <if test="sid != null"> and sid = #{sid} </if>
+            <if test="current != null"> and settled_time = #{current} </if>
+            <if test="start != null"><![CDATA[ and settled_time > #{start} ]]></if>
+            <if test="end != null"><![CDATA[ and settled_time <= #{end} ]]></if>
+        </where>
+        order by settled_time,`hour` asc
+    </select>
+
+    <select id="rpt:strategy:daily:select:today" resultType="report">
+        select
+        settled_time,
+        sid,
+        sum(view_count) as view_count,
+        sum(click_count) as click_count,
+        sum(ROUND(cost/#{markup,jdbcType=DOUBLE},2)) as cost
+        from rpt_strategy_hourly
+        <where>
+            sid = #{sid}
+            <if test="current != null"> and settled_time = #{current} </if>
+            <if test="start != null"><![CDATA[ and settled_time > #{start} ]]></if>
+            <if test="end != null"><![CDATA[ and settled_time <= #{end} ]]></if>
+        </where>
+        group by settled_time
+    </select>
+
+</mapper>

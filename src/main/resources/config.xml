@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--使用mybatis缓存-->
+    <settings>
+        <setting name="cacheEnabled" value="true" />
+        <setting name="mapUnderscoreToCamelCase" value="true" />
+    </settings>
+
+    <!--分页插件-->
+    <plugins>
+        <plugin interceptor="com.falcon.dsp.interceptor.PageInterceptor">
+            <property name="signature" value=":page"/>
+        </plugin>
+    </plugins>
+
+</configuration>

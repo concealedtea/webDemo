@@ -1,0 +1,86 @@
+{
+    "recordsTotal": 167,
+    "recordsFiltered": 167,
+    "data": [
+        {
+           "id": "10001",
+           "name": "创意demo1",
+           "strategycount": "1",
+           "adformat":"图片",
+           "position":"QQ空间-个人中心、应用中心以及详细页面左",
+           "url":"http://baidu.com"
+        },
+      {
+        "id": "10002",
+        "name": "创意demo1",
+        "strategycount": "1",
+        "adformat":"图片",
+        "position":"QQ空间-个人中心、应用中心以及详细页面左",
+        "url":"http://baidu.com"
+      },
+      {
+        "id": "10003",
+        "name": "创意demo1",
+        "strategycount": "1",
+        "adformat":"图片",
+        "position":"QQ空间-个人中心、应用中心以及详细页面左",
+        "url":"http://baidu.com"
+      },
+      {
+        "id": "10004",
+        "name": "创意demo1",
+        "strategycount": "1",
+        "adformat":"图片",
+        "position":"QQ空间-个人中心、应用中心以及详细页面左",
+        "url":"http://baidu.com"
+      },
+      {
+        "id": "10005",
+        "name": "创意demo1",
+        "strategycount": "1",
+        "adformat":"图片",
+        "position":"QQ空间-个人中心、应用中心以及详细页面左",
+        "url":"http://baidu.com"
+      },
+      {
+        "id": "10006",
+        "name": "创意demo1",
+        "strategycount": "1",
+        "adformat":"图片",
+        "position":"QQ空间-个人中心、应用中心以及详细页面左",
+        "url":"http://baidu.com"
+      },
+      {
+        "id": "10007",
+        "name": "创意demo1",
+        "strategycount": "1",
+        "adformat":"图片",
+        "position":"QQ空间-个人中心、应用中心以及详细页面左",
+        "url":"http://baidu.com"
+      },
+      {
+        "id": "10008",
+        "name": "创意demo1",
+        "strategycount": "1",
+        "adformat":"图片",
+        "position":"QQ空间-个人中心、应用中心以及详细页面左",
+        "url":"http://baidu.com"
+      },
+      {
+        "id": "10009",
+        "name": "创意demo1",
+        "strategycount": "1",
+        "adformat":"图片",
+        "position":"QQ空间-个人中心、应用中心以及详细页面左",
+        "url":"http://baidu.com"
+      },
+      {
+        "id": "100010",
+        "name": "创意demo1",
+        "strategycount": "1",
+        "adformat":"图片",
+        "position":"QQ空间-个人中心、应用中心以及详细页面左",
+        "url":"http://baidu.com"
+      }
+    ]
+}

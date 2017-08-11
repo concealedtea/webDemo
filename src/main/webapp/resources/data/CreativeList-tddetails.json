@@ -1,0 +1,5 @@
+[
+  {"id":1,"img":"100x200图片","status":1,"statusname":"待审核"},
+  {"id":2,"img":"100x200图片","status":2,"statusname":"正常"},
+  {"id":3,"img":"100x200图片","status":3,"statusname":"暂停"}
+]

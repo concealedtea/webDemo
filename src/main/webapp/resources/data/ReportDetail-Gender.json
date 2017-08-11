@@ -1,0 +1,17 @@
+{
+  "meta":{"success":true,"message":"ok"},
+  "data":{
+    "total": {
+      "ctr": 0.49,
+      "cost": 59.23,
+      "ecpm": 4.81,
+      "ecpc": 0.44,
+      "view_count": 163123,
+      "click_count": 1431
+    },
+    "list":[
+      {"key" : "男","ctr" : 0.19,"cost" : 19.23,"ecpm" : 1.81,"ecpc" : 0.14,"view_count" : 113123,"click_count" : 1131},
+      {"key" : "女","ctr" : 0.19,"cost" : 19.23,"ecpm" : 1.81,"ecpc" : 0.14,"view_count" : 113123,"click_count" : 1131}
+    ]
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "meta": {
+    "success": true,
+    "message": "ok"
+  },
+  "data": {
+    "total": {
+      "ctr": 1.34,
+      "cost": 131814.65,
+      "ecpm": 22.41,
+      "ecpc": 1.67,
+      "view_count": 5881098,
+      "click_count": 78844
+    },
+    "gender": [],
+    "area": [],
+    "age": [],
+    "list": [
+      {
+        "key": "0",
+        "ctr": 1.52,
+        "cost": 4436.12,
+        "ecpm": 32.4,
+        "ecpc": 2.14,
+        "view_count": 136926,
+        "click_count": 2076
+      },
+      {
+        "key": "1",
+        "ctr": 1.35,
+        "cost": 2119.78,
+        "ecpm": 28.87,
+        "ecpc": 2.13,
+        "view_count": 73416,
+        "click_count": 994
+      },
+      {
+        "key": "2",
+        "ctr": 1.41,
+        "cost": 1241.46,
+        "ecpm": 28.86,
+        "ecpc": 2.04,
+        "view_count": 43017,
+        "click_count": 608
+      },
+      {
+        "key": "3",
+        "ctr": 1.34,
+        "cost": 730.87,
+        "ecpm": 26.24,
+        "ecpc": 1.95,
+        "view_count": 27852,
+        "click_count": 374
+      },
+      {
+        "key": "4",
+        "ctr": 1.68,
+        "cost": 1335.66,
+        "ecpm": 34.39,
+        "ecpc": 2.05,
+        "view_count": 38838,
+        "click_count": 653
+      },
+      {
+        "key": "5",
+        "ctr": 1.6,
+        "cost": 1644.19,
+        "ecpm": 32.66,
+        "ecpc": 2.04,
+        "view_count": 50339,
+        "click_count": 805
+      },
+      {
+        "key": "6",
+        "ctr": 1.7,
+        "cost": 3506.68,
+        "ecpm": 35.42,
+        "ecpc": 2.08,
+        "view_count": 98991,
+        "click_count": 1682
+      },
+      {
+        "key": "7",
+        "ctr": 1.66,
+        "cost": 6693.13,
+        "ecpm": 34.26,
+        "ecpc": 2.06,
+        "view_count": 195357,
+        "click_count": 3250
+      },
+      {
+        "key": "8",
+        "ctr": 1.49,
+        "cost": 11241.91,
+        "ecpm": 28.34,
+        "ecpc": 1.9,
+        "view_count": 396628,
+        "click_count": 5907
+      },
+      {
+        "key": "9",
+        "ctr": 1.39,
+        "cost": 9880.52,
+        "ecpm": 25.85,
+        "ecpc": 1.87,
+        "view_count": 382264,
+        "click_count": 5297
+      },
+      {
+        "key": "10",
+        "ctr": 1.48,
+        "cost": 8436,
+        "ecpm": 24.85,
+        "ecpc": 1.68,
+        "view_count": 339519,
+        "click_count": 5024
+      },
+      {
+        "key": "11",
+        "ctr": 1.49,
+        "cost": 7837.94,
+        "ecpm": 24.38,
+        "ecpc": 1.63,
+        "view_count": 321471,
+        "click_count": 4795
+      },
+      {
+        "key": "12",
+        "ctr": 1.36,
+        "cost": 7057.44,
+        "ecpm": 22.18,
+        "ecpc": 1.63,
+        "view_count": 318247,
+        "click_count": 4329
+      },
+      {
+        "key": "13",
+        "ctr": 1.39,
+        "cost": 7386.82,
+        "ecpm": 22.61,
+        "ecpc": 1.63,
+        "view_count": 326638,
+        "click_count": 4530
+      },
+      {
+        "key": "14",
+        "ctr": 1.33,
+        "cost": 6422.09,
+        "ecpm": 20.95,
+        "ecpc": 1.57,
+        "view_count": 306501,
+        "click_count": 4079
+      },
+      {
+        "key": "15",
+        "ctr": 1.28,
+        "cost": 5925.99,
+        "ecpm": 20.02,
+        "ecpc": 1.57,
+        "view_count": 296023,
+        "click_count": 3786
+      },
+      {
+        "key": "16",
+        "ctr": 1.37,
+        "cost": 5517.41,
+        "ecpm": 20.92,
+        "ecpc": 1.53,
+        "view_count": 263764,
+        "click_count": 3616
+      },
+      {
+        "key": "17",
+        "ctr": 1.31,
+        "cost": 5619,
+        "ecpm": 20.13,
+        "ecpc": 1.54,
+        "view_count": 279153,
+        "click_count": 3656
+      },
+      {
+        "key": "18",
+        "ctr": 1.28,
+        "cost": 5842.83,
+        "ecpm": 19.08,
+        "ecpc": 1.49,
+        "view_count": 306208,
+        "click_count": 3909
+      },
+      {
+        "key": "19",
+        "ctr": 1.26,
+        "cost": 5723.84,
+        "ecpm": 18.62,
+        "ecpc": 1.48,
+        "view_count": 307466,
+        "click_count": 3875
+      },
+      {
+        "key": "20",
+        "ctr": 1.36,
+        "cost": 5956.71,
+        "ecpm": 19.69,
+        "ecpc": 1.45,
+        "view_count": 302476,
+        "click_count": 4101
+      },
+      {
+        "key": "21",
+        "ctr": 1.14,
+        "cost": 6409.4,
+        "ecpm": 17.33,
+        "ecpc": 1.52,
+        "view_count": 369794,
+        "click_count": 4224
+      },
+      {
+        "key": "22",
+        "ctr": 1.03,
+        "cost": 5925.31,
+        "ecpm": 15.37,
+        "ecpc": 1.49,
+        "view_count": 385561,
+        "click_count": 3989
+      },
+      {
+        "key": "23",
+        "ctr": 1.04,
+        "cost": 4923.55,
+        "ecpm": 15.65,
+        "ecpc": 1.5,
+        "view_count": 314649,
+        "click_count": 3285
+      }
+    ]
+  }
+}

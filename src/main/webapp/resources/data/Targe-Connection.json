@@ -1,0 +1,22 @@
+[
+  {
+    "name": "WIFI",
+    "value": "WIFI"
+  },
+  {
+    "name": "2G网络",
+    "value": "NET2G"
+  },
+  {
+    "name": "3G网络",
+    "value": "NET3G"
+  },
+  {
+    "name": "4G网络",
+    "value": "NET4G"
+  },
+  {
+    "name": "联网方式未知",
+    "value": "CONNECTION_UNKNOWN"
+  }
+]

@@ -1,0 +1,141 @@
+/**{margin:0;padding:0;}*/
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, dialog, div, dl, dt, em, embed, fieldset, figcaption, figure, font, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, meter, nav, object, ol, output, p, pre, progress, q, rp, rt, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video, xmp {
+    border: 0 none;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+}
+*::-moz-selection {
+    background: #a9ca60 none repeat scroll 0 0;
+    color: #fff;
+}
+html, body {
+    height: 100%;
+}
+body {
+    background-color: #f2f2f2;
+    color: #444;
+    font: 12px/1.5 "Helvetica Neue",Arial,Helvetica,sans-serif;
+}
+#page_error{
+    background-image:url("../image/blueprint.png")
+
+}
+div#da-wrapper, div#da-wrapper.fluid {
+    width: 100%;
+}
+div#da-wrapper, div#da-wrapper.fluid {
+    width: 100%;
+}
+div#da-wrapper {
+    height: auto;
+    min-height: 100%;
+    min-width: 320px;
+    position: relative;
+}
+
+div#da-content {
+    clear: both;
+    padding-bottom: 58px;
+}
+
+div#da-wrapper .da-container, div#da-wrapper.fluid .da-container {
+    margin: auto;
+    width: 96%;
+}
+
+div#da-error-wrapper {
+    margin: auto;
+    padding: 30px 0;
+    position: relative;
+    width: 320px;
+}
+
+div#da-error-wrapper #da-error-pin {
+    background: rgba(0, 0, 0, 0) url("../image/error-pin.png") no-repeat scroll center center;
+    display: block;
+    height: 38px;
+    margin: auto auto -27px;
+    position: relative;
+    width: 38px;
+    z-index: 10;
+}
+
+div#da-error-wrapper #da-error-code {
+    animation: 2s ease-in-out 0s alternate none infinite running error-swing;
+    background: rgba(0, 0, 0, 0) url("../image/error-hanger.png") no-repeat scroll center center;
+    font-size: 32px;
+    height: 170px;
+    line-height: 1;
+    margin: auto auto 20px;
+    padding: 127px 16px 0;
+    position: relative;
+    text-align: center;
+    transform-origin: center top 0;
+    width: 285px;
+    z-index: 5;
+}
+div#da-error-wrapper #da-error-code span {
+    display: block;
+    font-size: 96px;
+}
+
+div#da-error-wrapper .da-error-heading {
+    color: #e15656;
+    font-family: Georgia,"Times New Roman",Times,serif;
+    font-size: 24px;
+    text-align: center;
+}
+p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset, figure {
+    margin-bottom: 20px;
+}
+h1 {
+    font-size: 21px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+div#da-error-wrapper p {
+    font-size: 14px;
+    text-align: center;
+}
+p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset, figure {
+    margin-bottom: 20px;
+}
+@-webkit-keyframes error-swing {
+    0% {
+        -webkit-transform: rotate(1deg)
+    }
+
+    100% {
+        -webkit-transform: rotate(-2deg)
+    }
+}
+
+@-moz-keyframes error-swing {
+    0% {
+        -moz-transform: rotate(1deg)
+    }
+
+    100% {
+        -moz-transform: rotate(-2deg)
+    }
+}
+
+@keyframes error-swing {
+    0% {
+        transform: rotate(1deg)
+    }
+
+    100% {
+        transform: rotate(-2deg)
+    }
+}
+
+div#da-error-wrapper .da-error-icon {
+    background-color: #5fbeaa;
+    border: 1px solid #5fbeaa
+
+
+}

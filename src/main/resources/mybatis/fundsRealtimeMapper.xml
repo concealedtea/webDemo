@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fundsRealtimeMapper">
+
+
+    <delete id="fundsRealtime:delete" parameterType="int">
+        delete from funds_realtime where uid = #{uid}
+    </delete>
+
+    <insert id="fundsRealtime:insert:list" parameterType="java.util.List">
+        insert into funds_realtime (uid,account_type,balance,fund_status,daily_cost,create_time)
+        values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.uid},#{item.accountType},#{item.balance},#{item.fundStatus},#{item.dailyCost},now())
+        </foreach>
+    </insert>
+</mapper>

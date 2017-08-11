@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="targetMapper">
+
+    <insert id="target:insert">
+        INSERT INTO target(tid,uid,target_value,status,create_time)
+        VALUES (#{tid},#{uid},#{targetValue},#{status},now())
+    </insert>
+
+
+    <select id="target:area:list" resultType="areaModel">
+        SELECT DISTINCT a.id,a.name text,if(a.parent_id &lt;&gt; 0,a.parent_id,'#') parent
+        FROM area a
+        JOIN (SELECT id,name,parent_id
+        FROM area
+        <where>
+            <if test="searchKey != null">
+                name LIKE concat('%',#{searchKey},'%')
+            </if>
+        </where>
+        ) ar
+        on a.id = ar.parent_id
+        or a.id = ar.id
+    </select>
+
+    <select id="target:industry:list" resultType="areaModel">
+        SELECT i.id,i.name text,if(i.parent_id &lt;&gt; 0,i.parent_id,'#') parent
+        FROM industry i
+        <where>
+            <if test="searchKey != null">
+                i.name LIKE concat('%',#{searchKey},'%')
+            </if>
+        </where>
+    </select>
+
+    <update id="target:update">
+        UPDATE target
+        <set>
+            <if test="targetValue != null">
+                target_value = #{targetValue},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            last_mod_time = now()
+        </set>
+        WHERE tid = #{tid}
+        AND uid = #{uid}
+    </update>
+
+    <select id="target:industry:list:pid" resultType="java.util.Map">
+        SELECT i.id as id,i.name as text
+        FROM industry i
+        where i.parent_id =  #{pid}
+    </select>
+
+    <insert id="target:insert:batch" parameterType="java.util.List">
+        INSERT INTO target(tid,uid,target_value,status,create_time)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.tid},#{item.uid},#{item.targetValue},#{item.status},now())
+        </foreach>
+    </insert>
+
+    <select id="target:interest:list" resultType="areaModel">
+        SELECT DISTINCT a.id,a.name text,if(a.parent_id &lt;&gt; 0,a.parent_id,'#') parent
+        FROM interest a
+        JOIN (SELECT id,name,parent_id
+        FROM interest
+        <where>
+            <if test="searchKey != null">
+                name LIKE concat('%',#{searchKey},'%')
+            </if>
+        </where>
+        ) ar
+        on a.id = ar.parent_id
+        or a.id = ar.id
+    </select>
+</mapper>

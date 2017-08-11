@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+    <!--
+        spring可以自动去扫描base-package下面或者子包下面的java文件，
+        如果扫描到有@Component @Controller @Service @Repository等这些注解的类，则把这些类注册为bean
+    -->
+    <context:component-scan base-package="com.falcon.dsp.controller" />
+
+    <!--
+    	模型解析，在请求时为模型视图名称添加前后缀
+    	比如在controller类中需要请求/WEB-INF/page/index.jsp文件，直接写index就可以了
+    -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/view/" p:suffix=".jsp" />
+
+    <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+        <property name="order" value="1"/>
+    </bean>
+    
+    <bean id="messageDigest" class="com.falcon.dsp.common.MessageDigestSHA">
+    </bean>
+  
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/tiles.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/strategy/view.shtml"/>
+            <mvc:mapping path="/report/detail.shtml"/>
+            <mvc:mapping path="/campaign/view.shtml" />
+            <mvc:mapping path="/report/view.shtml" />
+            <mvc:mapping path="/advertiser/list.shtml" />
+            <mvc:mapping path="/index.shtml" />
+            <mvc:mapping path="/advertiser/detail.shtml" />
+            <mvc:mapping path="/finance/view.shtml" />
+            <mvc:mapping path="/agency/list.shtml" />
+            <mvc:mapping path="/agency/agencyFinanceList.shtml" />
+            <bean class="com.falcon.dsp.interceptor.UserVisitInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="false">
+            <bean class="org.springframework.http.converter.FormHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter"/>
+            <ref bean="messageConverter"/>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg name="defaultCharset" value="UTF-8"/>
+            </bean>
+        </mvc:message-converters>
+        <mvc:argument-resolvers>
+            <bean class="com.falcon.dsp.handler.UserArgumentResolver"></bean>
+        </mvc:argument-resolvers>
+        <mvc:return-value-handlers>
+            <bean class="com.falcon.dsp.handler.RoleReturnValueHandler"></bean>
+        </mvc:return-value-handlers>
+    </mvc:annotation-driven>
+
+    <bean id="messageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="objectMapper" ref="objectMapper"/>
+        <property name="prefixJson" value="false"/>
+        <property name="supportedMediaTypes">
+            <list>
+                <value>application/json</value>
+                <value>text/json</value>
+                <value>text/html</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="objectMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
+        <property name="dateFormat">
+            <bean class="java.text.SimpleDateFormat">
+                <constructor-arg index="0" value="yyyy-MM-dd HH:mm:ss"></constructor-arg>
+            </bean>
+        </property>
+        <property name="serializationInclusion" value="NON_NULL"/>
+        <property name="featuresToEnable">
+            <array>
+                <util:constant static-field="com.fasterxml.jackson.databind.DeserializationFeature.READ_ENUMS_USING_TO_STRING"></util:constant>
+                <util:constant static-field="com.fasterxml.jackson.databind.SerializationFeature.WRITE_ENUMS_USING_TO_STRING"></util:constant>
+            </array>
+        </property>
+    </bean>
+
+
+
+</beans>

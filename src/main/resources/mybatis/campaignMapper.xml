@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="campaignMapper">
+    <cache flushInterval="60000" size="1024" readOnly="true"/>
+
+    <select id="campaign:list:page" resultType="campaign" useCache="false">
+        select
+        campaign.cid,
+        campaign.uid,
+        campaign.cname,
+        campaign.start,
+        campaign.end,
+        ROUND(campaign.day_budget /100/ #{markup, jdbcType=DOUBLE}) day_budget,
+        campaign.speed_mode,
+        advertiser.uname,
+        strategy.strategy_count,
+        CASE
+        WHEN status = 1 and <![CDATA[ now() < start ]]> THEN 0
+        WHEN status = 1 and <![CDATA[ now() >= start AND now() < `end` ]]> THEN 1
+        WHEN status = 1 and <![CDATA[ now() > `end` ]]> THEN 2
+        else status
+        end as status,
+        campaign.create_time,
+        campaign.last_mod_time
+        from campaign campaign
+        left join advertiser advertiser on campaign.uid = advertiser.uid
+        left join (select campaign_id,count(1) as strategy_count from strategy where status != -1 group by campaign_id) strategy on strategy.campaign_id = campaign.cid
+        <where>
+            <if test="(cname != null) or (cid != null and cid.size() > 0)">
+                (
+                <if test="cid != null and cid.size() > 0">
+                    campaign.cid in
+                    <foreach collection="cid" index="index" item="item" open="(" separator="," close=")">
+                        #{item}
+                    </foreach>
+                </if>
+                <if test="cid != null and cid.size() > 0 and cname != null">
+                    OR
+                </if>
+                <if test="cname != null">
+                    campaign.cname like CONCAT('%',#{cname},'%')
+                </if>
+                )
+            </if>
+            <if test="uid != null">
+                and campaign.uid = #{uid}
+            </if>
+            <if test="agencyId != null">
+                and campaign.uid in (select uid from advertiser where agency_id = #{agencyId})
+            </if>
+            <if test="status != null and status == 0">
+                and campaign.status = 1 and <![CDATA[ now() < campaign.start ]]>
+            </if>
+            <if test="status != null and status == 1">
+                and campaign.status = 1 and <![CDATA[ now() >= campaign.start ]]> and <![CDATA[ now() < campaign.end ]]>
+            </if>
+            <if test="status != null and status == 2">
+                and campaign.status = 1 and <![CDATA[ now() > campaign.end ]]>
+            </if>
+            <if test="status != null and status > 2">
+                and campaign.status = #{status}
+            </if>
+            <if test="status != null and status == -1">
+                and campaign.status = #{status}
+            </if>
+            and campaign.status != -1
+        </where>
+        ORDER BY cid desc
+        <!--<if test="orderbyColumn != null">-->
+        <!--ORDER BY ${orderbyColumn}-->
+        <!--</if>-->
+        <!--<if test="orderby != null">-->
+        <!--${orderby}-->
+        <!--</if>-->
+    </select>
+
+    <update id="campaign:delete" flushCache="true">
+        update campaign set stauts = -1 where cid = #{cid}
+    </update>
+
+    <update id="campaign:update" flushCache="true">
+        update campaign
+        SET
+            <if test="uid != null">uid = #{uid},</if>
+            <if test="cname != null">cname = #{cname},</if>
+            <if test="start != null">start = #{start},</if>
+            <if test="end != null">end = #{end},</if>
+            <if test="dayBudget != null">day_budget = #{dayBudget},</if>
+            <if test="speedMode != null">speed_mode = #{speedMode},</if>
+            <if test="status != null and status == 0">status = 1,</if>
+            <if test="status != null and status == 1">status = 1,</if>
+            <if test="status != null and status == 2">status = 1,</if><!-- 暂停 -->
+            <if test="status != null and status == 3">status = #{status},</if>
+            <if test="status != null and status == -1">status = #{status},</if><!-- 删除 -->
+            last_mod_time = now()
+        where cid = #{cid}
+    </update>
+
+    <insert id="campaign:insert">
+        insert into campaign(cid,uid,cname,start,end,day_budget,speed_mode,create_time)
+        values (#{cid}, #{uid}, #{cname},#{start},#{end},#{dayBudget},#{speedMode},#{createTime})
+    </insert>
+
+    <select id="campaign:select:one:info" resultType="campaign" useCache="true">
+         select campaign.cid,
+        campaign.uid,
+        campaign.cname,
+        campaign.start,
+        campaign.end,
+        campaign.day_budget as day_budget,
+        campaign.speed_mode,
+        advertiser.uname,
+        strategy.strategy_count,
+        CASE
+        WHEN campaign.status = 1 and <![CDATA[ now() < campaign.start ]]> THEN 0
+        WHEN campaign.status = 1 and <![CDATA[ now() >= campaign.start AND now() < campaign.end ]]> THEN 1
+        WHEN campaign.status = 1 and <![CDATA[ now() > campaign.end ]]> THEN 2
+        else status
+        end as status,
+        campaign.create_time,
+        campaign.last_mod_time
+        from campaign campaign
+        left join advertiser advertiser on campaign.uid = advertiser.uid
+        left join (select campaign_id,count(1) as strategy_count from strategy where status != -1 group by campaign_id) strategy on strategy.campaign_id = campaign.cid
+        where campaign.cid = #{cid}
+   </select>
+
+    <select id="campaign:select:one" resultType="campaign" useCache="true">
+        select campaign.cid,
+        campaign.uid,
+        campaign.cname,
+        campaign.start,
+        campaign.end,
+        ROUND(campaign.day_budget/100/ #{markup,jdbcType=DOUBLE}) as day_budget,
+        campaign.speed_mode,
+        advertiser.uname,
+        strategy.strategy_count,
+        CASE
+        WHEN campaign.status = 1 and <![CDATA[ now() < campaign.start ]]> THEN 0
+        WHEN campaign.status = 1 and <![CDATA[ now() >= campaign.start AND now() < campaign.end ]]> THEN 1
+        WHEN campaign.status = 1 and <![CDATA[ now() > campaign.end ]]> THEN 2
+        else status
+        end as status,
+        campaign.create_time,
+        campaign.last_mod_time
+        from campaign campaign
+        left join advertiser advertiser on campaign.uid = advertiser.uid
+        left join (select campaign_id,count(1) as strategy_count from strategy where status != -1 group by campaign_id) strategy on strategy.campaign_id = campaign.cid
+        where campaign.cid = #{cid}
+    </select>
+
+    <select id="campaign:checkname" resultType="int" useCache="true">
+        select count(1) from campaign where cname like #{cname} and uid = #{uid}
+    </select>
+
+    <select id="campaign:budget:select" resultType="double">
+        select day_budget/100 from campaign where uid = #{uid} and cid = #{cid}
+    </select>
+
+    <insert id="campaign:insert:batch" parameterType="java.util.List">
+        insert into campaign(cid,uid,cname,start,end,day_budget,speed_mode,create_time)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.cid}, #{item.uid}, #{item.cname},#{item.start},#{item.end},#{item.dayBudget},#{item.speedMode},now())
+        </foreach>
+    </insert>
+
+    <select id="campaign:cids:uids" parameterType="java.util.List" resultType="java.lang.Integer">
+        select cid from campaign where uid in
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="campaign:cids:uid" resultType="java.lang.Integer">
+        select cid from campaign where uid = #{uid,jdbcType=INTEGER}
+    </select>
+</mapper>

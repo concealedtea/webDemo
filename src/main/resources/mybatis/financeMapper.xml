@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="financeMapper">
+
+    <select id="finance:list:page" resultType="int">
+        select cid from finance
+    </select>
+
+    <resultMap id="map:finance" type="com.falcon.dsp.jdbc.entity.Finance">
+        <id property="cid" column="cid" javaType="Integer" />
+    </resultMap>
+
+    <update id="finance:delete">
+        update campaign set stauts = -1 where cid = #{cid}
+    </update>
+
+    <insert id="finance:insert">
+        insert into campaign(gdt_cid,uid,cname,start,end,day_budget,speed_mode,status,create_time)
+        values (#{gdtCid}, #{uid}, #{cname},#{start},#{end},#{dayBudget},#{speedMode},#{status},#{createTime})
+    </insert>
+
+</mapper>

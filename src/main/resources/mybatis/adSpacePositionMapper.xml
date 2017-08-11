@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adSpacePositionMapper">
+
+    <cache flushInterval="600000" size="1024" readOnly="true"/>
+
+    <select id="adSpacePosition:select:list" resultMap="adSpacePositionMap" useCache="true">
+        select sp.id,sp.platform_id,p.name platform,f.name ad_format,sp.ad_format_id,sp.description
+        from ad_space_position sp
+        join strategy_platform p
+        on p.id = sp.platform_id
+        join ad_format f
+        on f.id = sp.ad_format_id
+        <where>
+            <if test="platformId > 0">
+                sp.platform_id = #{platformId}
+            </if>
+            <if test="adFormatId > 0">
+                and sp.ad_format_id = #{adFormatId}
+            </if>
+        </where>
+        ORDER BY sp.platform_id ASC , sp.ad_format_id ASC
+    </select>
+
+    <resultMap id="adSpacePositionMap" type="com.falcon.dsp.jdbc.model.AdSpacePositionModel">
+        <result property="id" column="id"/>
+        <result property="platformId" column="platform_id"/>
+        <result property="platform" column="platform"/>
+        <result property="adFormatId" column="ad_format_id"/>
+        <result property="adFormat" column="ad_format"/>
+        <result property="description" column="description"/>
+        <collection property="specifics" column="id" ofType="com.falcon.dsp.jdbc.model.ImageRuleModel" select="imageRule:select:list"/>
+        <collection property="imageDemos" column="id" ofType="imageDemo" select="imageDemo:select:list"/>
+    </resultMap>
+
+    <resultMap id="imageRuleMap" type="com.falcon.dsp.jdbc.model.ImageRuleModel">
+        <result property="id" column="id" />
+        <result property="width" column="width" />
+        <result property="height" column="height" />
+        <result property="title" column="title"/>
+        <result property="description" column="description"/>
+        <association property="imageUrl" javaType="com.falcon.dsp.jdbc.entity.ImageUrl">
+            <result property="id" column="u_id"/>
+            <result property="width" column="u_width"/>
+            <result property="height" column="u_height"/>
+            <result property="size" column="u_size"/>
+        </association>
+        <association property="image2Url" javaType="com.falcon.dsp.jdbc.entity.ImageUrl">
+            <result property="id" column="r_id"/>
+            <result property="width" column="r_width"/>
+            <result property="height" column="r_height"/>
+            <result property="size" column="r_size"/>
+        </association>
+    </resultMap>
+
+    <select id="platform:select:list" resultType="platform">
+          SELECT id, name from strategy_platform
+    </select>
+
+    <select id="imageDemo:select:list" resultType="imageDemo">
+        SELECT id,url FROM image_demo
+        where ad_space_position_id = #{id}
+    </select>
+
+    <select id="imageRule:select:list" resultMap="imageRuleMap">
+        SELECT i.id,i.width,i.height,i.title,i.description
+               ,u.id u_id,u.width u_width,u.height u_height,u.size u_size
+               ,r.id r_id,r.width r_width,r.height r_height,r.size r_size
+        FROM image_rule i
+        LEFT JOIN image_url u
+        ON u.id = i.image_url_id
+        LEFT JOIN image_url r
+        ON r.id = i.image2_url_id
+        WHERE i.id IN (
+          SELECT spi.image_rule_id FROM ad_space_position_image_rule_relation spi
+          WHERE spi.ad_space_position_id = #{id}
+        )
+    </select>
+
+    <select id="adSpace:position:select" resultType="java.util.Map" useCache="false">
+        SELECT DISTINCT t1.ad_space_position_id
+        FROM
+          ad_space_position AS t ,
+          ad_space_position_image_rule_relation AS t1 ,
+          strategy_platform AS t2
+        WHERE
+          t.platform_id = t2.id AND
+          t1.ad_space_position_id = t.id
+        and t2.`value` = #{siteValue,jdbcType=VARCHAR}
+        and t1.image_rule_id in ${ids}
+    </select>
+</mapper>

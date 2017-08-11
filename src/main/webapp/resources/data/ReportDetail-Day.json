@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "success": true,
+    "message": "ok"
+  },
+  "data": {
+    "total": {
+      "ctr": 0.49,
+      "cost": 59.23,
+      "ecpm": 4.81,
+      "ecpc": 0.44,
+      "view_count": 163123,
+      "click_count": 1431
+    },
+    "list": [
+      {
+        "key": "2016-04-07",
+        "ctr": 0.49,
+        "cost": 59.23,
+        "ecpm": 4.81,
+        "ecpc": 0.44,
+        "view_count": 163123,
+        "click_count": 1431
+      },
+      {
+        "key": "2016-04-08",
+        "ctr": 0.39,
+        "cost": 49.23,
+        "ecpm": 3.81,
+        "ecpc": 0.34,
+        "view_count": 143123,
+        "click_count": 1331
+      },
+      {
+        "key": "2016-04-09",
+        "ctr": 0.29,
+        "cost": 39.23,
+        "ecpm": 2.81,
+        "ecpc": 0.24,
+        "view_count": 163123,
+        "click_count": 1231
+      },
+      {
+        "key": "2016-04-10",
+        "ctr": 0.19,
+        "cost": 29.23,
+        "ecpm": 1.81,
+        "ecpc": 0.14,
+        "view_count": 113123,
+        "click_count": 1131
+      },
+      {
+        "key": "2016-04-11",
+        "ctr": 0.09,
+        "cost": 19.23,
+        "ecpm": 0.81,
+        "ecpc": 0.04,
+        "view_count": 123123,
+        "click_count": 1031
+      },
+      {
+        "key": "2016-04-12",
+        "ctr": 0.99,
+        "cost": 99.23,
+        "ecpm": 9.81,
+        "ecpc": 0.94,
+        "view_count": 193123,
+        "click_count": 1931
+      },
+      {
+        "key": "2016-04-13",
+        "ctr": 0.89,
+        "cost": 89.23,
+        "ecpm": 8.81,
+        "ecpc": 0.84,
+        "view_count": 173123,
+        "click_count": 1831
+      },
+      {
+        "key": "2016-04-14",
+        "ctr": 0.79,
+        "cost": 79.23,
+        "ecpm": 7.81,
+        "ecpc": 0.74,
+        "view_count": 123123,
+        "click_count": 1731
+      },
+      {
+        "key": "2016-04-15",
+        "ctr": 0.69,
+        "cost": 69.23,
+        "ecpm": 6.81,
+        "ecpc": 0.64,
+        "view_count": 163123,
+        "click_count": 1631
+      },
+      {
+        "key": "2016-04-16",
+        "ctr": 0.59,
+        "cost": 59.23,
+        "ecpm": 5.81,
+        "ecpc": 0.54,
+        "view_count": 183123,
+        "click_count": 1531
+      },
+      {
+        "key": "2016-04-17",
+        "ctr": 0.49,
+        "cost": 49.23,
+        "ecpm": 4.81,
+        "ecpc": 0.44,
+        "view_count": 143123,
+        "click_count": 1431
+      },
+      {
+        "key": "2016-04-18",
+        "ctr": 0.39,
+        "cost": 39.23,
+        "ecpm": 3.81,
+        "ecpc": 0.34,
+        "view_count": 133123,
+        "click_count": 1331
+      },
+      {
+        "key": "2016-04-19",
+        "ctr": 0.29,
+        "cost": 29.23,
+        "ecpm": 2.81,
+        "ecpc": 0.24,
+        "view_count": 163123,
+        "click_count": 1231
+      },
+      {
+        "key": "2016-04-20",
+        "ctr": 0.19,
+        "cost": 19.23,
+        "ecpm": 1.81,
+        "ecpc": 0.14,
+        "view_count": 113123,
+        "click_count": 1131
+      }
+    ]
+  }
+}

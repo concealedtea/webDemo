@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="materialMapper">
+
+    <insert id="material:insert">
+        INSERT INTO material(gdt_creative_id,creative_id,crt_size,title,description,image_url,image2_url,status,create_time)
+        VALUES(#{gdtCreativeId},#{creativeId},#{crtSize},#{title},#{description},#{imageUrl},#{image2Url},#{status},now())
+    </insert>
+
+    <select id="material:select:list" resultType="material">
+        SELECT id,gdt_creative_id,creative_id,crt_size,title,description,image_url,image2_url,status
+        FROM material
+        WHERE creative_id = #{creativeId}
+        AND status != -2
+    </select>
+
+    <select id="material:select:one" resultType="material">
+        SELECT id,gdt_creative_id,creative_id,crt_size,title,description,image_url,image2_url,status
+        FROM material
+        WHERE id = #{id}
+    </select>
+
+    <update id="material:abandon:list">
+        UPDATE material
+        SET status = -2,
+        last_mod_time = now()
+        WHERE creative_id = #{creativeId}
+    </update>
+
+    <update id="material:status:change">
+        UPDATE material
+        SET status = #{status},
+        last_mod_time = now()
+        WHERE id = #{id}
+    </update>
+
+    <update id="material:update">
+        UPDATE material
+        <set>
+            <if test="gdtCreativeId != null">
+                gdt_creative_id = #{gdtCreativeId},
+            </if>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="description != null">
+                description = #{description},
+            </if>
+            <if test="imageUrl != null">
+                image_url = #{imageUrl},
+            </if>
+            <if test="image2Url != null">
+                image2_url = #{image2Url},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            last_mod_time = now()
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 素材预览 -->
+    <select id="material:preview" resultType="materialRuleModel">
+       SELECT ma.id,ma.gdt_creative_id,ma.width,ma.height,
+            iu.width r_width,iu.height r_height
+            FROM (SELECT m.id,
+            ir.width,
+            ir.height,
+            ir.image_url_id,
+            m.creative_id,
+            m.gdt_creative_id
+       FROM
+            material m
+       JOIN image_rule ir
+       ON ir.id = m.crt_size
+       WHERE m.status != -2) ma
+       LEFT JOIN image_url iu
+       ON iu.id = ma.image_url_id
+       where ma.creative_id = #{creativeId}
+    </select>
+
+    <!-- 创意对应素材在广点通创建成功后 -->
+    <select id="material:creative:exists" resultType="int">
+        SELECT gdt_creative_id FROM material
+        WHERE creative_id = #{creativeId}
+        AND gdt_creative_id is not null
+    </select>
+
+    <!-- 广点通创意绑定关系解除 -->
+    <update id="material:gdtCreative:division">
+        UPDATE material
+        SET gdt_creative_id = null,
+        last_mod_time = now()
+        WHERE creative_id = #{creativeId}
+    </update>
+
+    <insert id="material:insert:batch" parameterType="java.util.List">
+        INSERT INTO material(gdt_creative_id,creative_id,crt_size,title,description,image_url,image2_url,status,create_time)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.gdtCreativeId},#{item.creativeId},#{item.crtSize},#{item.title},#{item.description},#{item.imageUrl},#{item.image2Url},#{item.status},now())
+        </foreach>
+    </insert>
+</mapper>

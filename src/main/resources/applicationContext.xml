@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:component-scan base-package="com.falcon.dsp.*">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!-- production环境 -->
+    <context:property-placeholder ignore-unresolvable="true" file-encoding="utf-8" location="classpath:jdbc.properties"/>
+
+    <!-- MyBatis配置 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="datasource"/>
+        <!-- 显式指定Mapper文件位置 -->
+        <property name="mapperLocations" value="classpath*:/mybatis/*Mapper.xml"/>
+        <!-- mybatis配置文件路径 -->
+        <property name="configLocation" value="classpath:config.xml"/>
+        <property name="typeAliasesPackage" value="com.falcon.dsp.jdbc"></property>
+    </bean>
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+    <bean id="sqlHandler" class="com.falcon.dsp.handler.DefaultSqlSessionHandler">
+        <property name="sqlSession" ref="sqlSessionTemplate"/>
+    </bean>
+    <!-- 使用annotation定义事务 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="datasource"></property>
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+
+    <bean name="datasource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="initialSize" value="10"/>
+        <property name="maxWait" value="60000"/>
+        <property name="filters" value="stat,wall" />
+        <property name="removeAbandoned" value="true"/>
+        <property name="maxActive" value="40"/>
+    </bean>
+
+    <!-- report db config -->
+    <!-- MyBatis配置 -->
+    <bean id="rportSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="reportDatasource"/>
+        <!-- 显式指定Mapper文件位置 -->
+        <property name="mapperLocations" value="classpath*:/mybatisReport/*.xml"/>
+        <!-- mybatis配置文件路径 -->
+        <property name="configLocation" value="classpath:config.xml"/>
+        <property name="typeAliasesPackage" value="com.falcon.dsp.jdbc"></property>
+    </bean>
+    <bean id="reportSqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+        <constructor-arg index="0" ref="rportSqlSessionFactory"/>
+    </bean>
+    <bean id="reportSqlHandler" class="com.falcon.dsp.handler.DefaultSqlSessionHandler">
+        <property name="sqlSession" ref="reportSqlSessionTemplate"/>
+    </bean>
+    <bean name="reportDatasource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.report.driver}"/>
+        <property name="url" value="${jdbc.report.url}"/>
+        <property name="username" value="${jdbc.report.username}"/>
+        <property name="password" value="${jdbc.report.password}"/>
+        <property name="initialSize" value="2"/>
+        <property name="maxWait" value="60000"/>
+        <property name="removeAbandoned" value="true"/>
+        <property name="maxActive" value="20"/>
+    </bean>
+
+    <!-- new -->
+    <bean id="rportSqlSessionFactoryTest" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="reportDatasourceTest"/>
+        <!-- 显式指定Mapper文件位置 -->
+        <property name="mapperLocations" value="classpath*:/mybatisReport/*.xml"/>
+        <!-- mybatis配置文件路径 -->
+        <property name="configLocation" value="classpath:config.xml"/>
+        <property name="typeAliasesPackage" value="com.falcon.dsp.jdbc"></property>
+    </bean>
+    <bean id="reportSqlSessionTemplateTest" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+        <constructor-arg index="0" ref="rportSqlSessionFactoryTest"/>
+    </bean>
+    <bean id="reportSqlHandlerTest" class="com.falcon.dsp.handler.DefaultSqlSessionHandler">
+        <property name="sqlSession" ref="reportSqlSessionTemplateTest"/>
+    </bean>
+    <bean name="reportDatasourceTest" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.reporttest.driver}"/>
+        <property name="url" value="${jdbc.reporttest.url}"/>
+        <property name="username" value="${jdbc.reporttest.username}"/>
+        <property name="password" value="${jdbc.reporttest.password}"/>
+        <property name="initialSize" value="2"/>
+        <property name="maxWait" value="60000"/>
+        <property name="removeAbandoned" value="true"/>
+        <property name="maxActive" value="20"/>
+    </bean>
+    <!-- end -->
+
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.FormHttpMessageConverter"/>
+                <bean id="messageConverter"
+                      class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                    <property name="objectMapper">
+                        <bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
+                            <property name="dateFormat">
+                                <bean class="java.text.SimpleDateFormat">
+                                    <constructor-arg index="0" value="yyyy-MM-dd HH:mm:ss"></constructor-arg>
+                                </bean>
+                            </property>
+                        </bean>
+                    </property>
+                    <property name="prefixJson" value="false"/>
+                    <property name="supportedMediaTypes">
+                        <list>
+                            <value>application/json</value>
+                            <value>text/json</value>
+                        </list>
+                    </property>
+                </bean>
+                <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                    <constructor-arg name="defaultCharset" value="UTF-8"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="userViewController" class="com.falcon.dsp.common.UserViewConstant">
+        <property name="agencyViews">
+            <list>
+                <value>/campaign/view.shtml</value>
+                <value>/report/view.shtml</value>
+                <value>/advertiser/list.shtml</value>
+                <value>/advertiser/detail.shtml</value>
+                <value>/finance/view.shtml</value>
+                <value>/strategy/view.shtml</value>
+                <value>/report/detail.shtml</value>
+                <value>/user/view.shtml</value>
+                <value>/report/user.shtml</value>
+            </list>
+        </property>
+        <property name="advertiserViews">
+            <list>
+                <value>/index.shtml</value>
+                <value>/campaign/view.shtml</value>
+                <value>/report/view.shtml</value>
+                <value>/advertiser/detail.shtml</value>
+                <value>/finance/view.shtml</value>
+                <value>/strategy/view.shtml</value>
+                <value>/report/detail.shtml</value>
+            </list>
+        </property>
+        <property name="adminViews">
+            <list>
+                <value>/agency/list.shtml</value>
+                <value>/agency/agencyFinanceList.shtml</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 正式环境 -->
+
+    <bean id="restHandler" class="com.falcon.dsp.rest.GdtRestHandler">
+        <property name="restTemplate" ref="restTemplate"/>
+        <property name="urlPrefix" value="${gdt.apiUrl}"/>
+        <property name="uid" value="${gdt.uid}"/>
+        <property name="appId" value="${gdt.appId}"/>
+        <property name="appKey" value="${gdt.appKey}"/>
+        <property name="contentType" value="application/x-www-form-urlencoded;charset=UTF-8"/>
+    </bean>
+
+    <!-- 服务器地址 -->
+    <bean id="serverAddress" class="java.lang.String">
+        <constructor-arg value="${serverAddress}"/>
+    </bean>
+
+    <!-- 服务器地址 -->
+    <bean id="resourceAddress" class="java.lang.String">
+        <constructor-arg value="${resourceAddress}"/>
+    </bean>
+
+</beans>

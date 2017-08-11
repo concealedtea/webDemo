@@ -1,0 +1,30 @@
+[
+  {
+    "name": "博士",
+    "value": "DOCTOR"
+  },
+  {
+    "name": "硕士",
+    "value": "MASTER"
+  },
+  {
+    "name": "本科",
+    "value": "BACHELOR"
+  },
+  {
+    "name": "高中",
+    "value": "SENIOR"
+  },
+  {
+    "name": "初中",
+    "value": "JUNIOR"
+  },
+  {
+    "name": "小学",
+    "value": "PRIMARY"
+  },
+  {
+    "name": "未知",
+    "value": "UNKNOWN"
+  }
+]

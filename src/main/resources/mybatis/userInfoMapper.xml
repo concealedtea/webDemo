@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userInfoMapper">
+
+	<!-- 根据用户名获得用户 -->
+	<select id="userInfo:select:one" resultType="userInfo">
+		select id,user_name,password,user_role,uid,status,
+		create_time from user_info
+		where user_name = #{userName}
+	</select>
+
+	<!-- 插入新用户 -->
+	<insert id="userInfo:insert">
+		insert into user_info(user_name,password,user_role,uid,status,create_time,last_mod_time)
+		values (#{userName},#{password},#{userRole},#{uid},#{status},now(),now())
+	</insert>
+
+	<update id="userInfo:update:status" parameterType="java.util.Map">
+		update user_info
+		<set>
+			<if test="status != null"> status = #{status} </if>
+		</set>
+		<where>
+			<if test="user_name != null"> user_name = #{user_name} </if>
+		</where>
+	</update>
+	
+   	<!-- 验证用户名（userName）重复 -->
+    <select id="userInfo:check:userName" resultType="int">
+        SELECT count(1)
+        FROM user_info
+        <where>
+           <if test="id != null">
+              id != #{id}
+          </if>
+            AND user_name = #{userName}
+        </where>
+    </select>
+
+	<!-- 查询代理商下所有登录用户列表 默认id倒叙排序-->
+	<select id="userInfo:list:page" resultType="userListModel">
+		select t1.id,t1.user_name,t1.user_role,t1.uid,t2.uname,t1.`status` from (
+		select ui.id,ui.user_name,ui.user_role,ui.uid,ui.`status`
+		from user_info ui where
+		(ui.user_role = 'ADVERTISER' AND ui.uid in (select uid from advertiser adv where adv.agency_id = #{agencyId}) ) or ( ui.user_role='AGENCY' and ui.uid = #{agencyId} )) t1
+		LEFT JOIN advertiser t2 on t1.user_role = 'ADVERTISER' and t1.uid = t2.uid
+		<where>
+			<if test="searchKeyword != null and searchKeyword != '' ">
+				t1.id = #{searchKeyword,jdbcType=VARCHAR} OR t1.user_name like '%${searchKeyword}%'
+			</if>
+		</where>
+		ORDER BY t1.id DESC
+	</select>
+
+	<select id="userInfo:selectById" resultType="userListModel">
+		select ui.id,ui.user_name,ui.user_role,ui.uid,adv.uname,ui.status,ui.create_time from user_info ui
+		LEFT JOIN advertiser adv ON ui.user_role = 'ADVERTISER' AND ui.uid = adv.uid
+		where id = #{id}
+	</select>
+
+	<update id="userInfo:update">
+		UPDATE  user_info SET
+		<if test="userName != null"> user_name = #{userName}, </if>
+		<if test="password != null"> password = #{password}, </if>
+		<if test="userRole != null"> user_role = #{userRole}, </if>
+		<if test="uid != null"> uid = #{uid}, </if>
+		<if test="status != null"> status = #{status}, </if>
+		last_mod_time = now()
+		WHERE  id = #{id}
+	</update>
+</mapper>

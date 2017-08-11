@@ -1,0 +1,86 @@
+{
+  "recordsTotal": 167,
+  "recordsFiltered": 167,
+  "data": [
+    {
+      "uid": "10001",
+      "uname": "广告主demo1",
+      "customerStatus": "有效",
+      "balance":123452,
+      "dayCost":123456,
+      "dayBudget":1000
+    },
+    {
+      "uid": "10002",
+      "uname": "广告主demo2",
+      "customerStatus": "待审核",
+      "balance":123452,
+      "dayCost":123456,
+      "dayBudget":1000
+    },
+    {
+      "uid": "10003",
+      "uname": "广告主demo3",
+      "customerStatus": "待审核",
+      "balance":123452,
+      "dayCost":123456,
+      "dayBudget":1000
+    },
+    {
+      "uid": "10004",
+      "uname": "广告主demo4",
+      "customerStatus": "待审核",
+      "balance":123452,
+      "dayCost":123456,
+      "dayBudget":1000
+    },
+    {
+      "uid": "10005",
+      "uname": "广告主demo5",
+      "customerStatus": "待审核",
+      "balance":123452,
+      "dayCost":123456,
+      "dayBudget":1000
+    },
+    {
+      "uid": "10006",
+      "uname": "广告主demo6",
+      "customerStatus": "待审核",
+      "balance":123452,
+      "dayCost":123456,
+      "dayBudget":1000
+    },
+    {
+      "uid": "10007",
+      "uname": "广告主demo7",
+      "customerStatus": "待审核",
+      "balance":123452,
+      "dayCost":123456,
+      "dayBudget":1000
+    },
+    {
+      "uid": "10008",
+      "uname": "广告主demo8",
+      "customerStatus": "待审核",
+      "balance":123452,
+      "dayCost":123456,
+      "dayBudget":1000
+    },
+    {
+      "uid": "10009",
+      "uname": "广告主demo9",
+      "customerStatus": "待审核",
+      "balance":123452,
+      "dayCost":123456,
+      "dayBudget":1000
+    },
+    {
+      "uid": "10010",
+      "uname": "广告主demo10",
+      "customerStatus": "待审核",
+      "balance":123452,
+      "dayCost":123456,
+      "dayBudget":1000
+    }
+  ]
+}

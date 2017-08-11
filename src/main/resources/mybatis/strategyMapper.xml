@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="strategyMapper">
+
+    <cache flushInterval="60000" size="1024" readOnly="true"/>
+
+    <insert id="strategy:insert">
+        INSERT INTO strategy (sid,sname,start,`end`,description,creative_id,bid,uid,campaign_id,target_id,status,create_time)
+        VALUE (#{sid},#{sname},#{start},#{end},#{description},#{creativeId},#{bid},#{uid},#{campaignId},#{targetId},#{status},#{createTime})
+    </insert>
+
+    <resultMap id="mapper:strategy" type="com.falcon.dsp.jdbc.entity.Strategy">
+
+        <id property="sid" column="sid" javaType="int"/>
+        <result property="sname" column="sname" javaType="java.lang.String"/>
+        <result property="start" column="start" javaType="java.util.Date"/>
+        <result property="end" column="end" javaType="java.util.Date"/>
+        <result property="description" column="stratety_desc" javaType="java.lang.String"/>
+        <result property="bid" column="bid" javaType="double"/>
+        <result property="uid" column="uid" javaType="int"/>
+        <result property="campaignId" column="campaign_id" javaType="int"/>
+        <result property="creativeId" column="creative_id" javaType="int"/>
+        <result property="targetId" column="target_id" javaType="int"/>
+        <result property="status" column="status" javaType="int"/>
+        <result property="createTime" column="create_time" javaType="java.util.Date"/>
+        <result property="lastModTime" column="last_mod_time" javaType="java.util.Date"/>
+        <result property="auditMsg" column="audit_msg" javaType="java.lang.String"/>
+        <association property="creative" column="creative_id" javaType="com.falcon.dsp.jdbc.entity.Creative">
+            <id property="id" column="creative_id" javaType="int"/>
+            <result property="creativeName" column="creative_name" javaType="java.lang.String"/>
+            <result property="remark" column="remark" javaType="java.lang.String"/>
+            <result property="destUrl" column="dest_url" javaType="java.lang.String"/>
+        </association>
+
+        <association property="adSpacePosition" column="ad_space_position_id"
+                     javaType="com.falcon.dsp.jdbc.entity.AdSpacePosition">
+            <id property="id" column="ad_space_position_id" javaType="int"/>
+            <result property="platformId" column="platform_id" javaType="int"/>
+            <result property="description" column="ad_space_position_desc" javaType="java.lang.String"/>
+        </association>
+
+        <association property="strategyPlatform" column="ad_format_id"
+                     javaType="com.falcon.dsp.jdbc.entity.StrategyPlatform">
+            <id property="id" column="ad_format_id" javaType="int"/>
+            <result property="name" column="name" javaType="java.lang.String"/>
+        </association>
+
+        <association property="target" column="target_id" javaType="com.falcon.dsp.jdbc.entity.Target">
+            <id property="tid" column="target_id" javaType="int"/>
+            <result property="targetValue" column="target_value" javaType="java.lang.String"/>
+            <result property="uid" column="target_uid" javaType="int"/>
+        </association>
+
+    </resultMap>
+
+    <select id="strategy:select:one" resultMap="mapper:strategy" useCache="false">
+        select
+        strategy.sid,
+        strategy.sname,
+        strategy.start,
+        strategy.end,
+        strategy.description as stratety_desc,
+        strategy.bid / 100 as bid,
+        strategy.campaign_id,
+        strategy.uid,
+        CASE
+        WHEN strategy.status = 1 and <![CDATA[ now() < strategy.start ]]> then 0
+        WHEN strategy.status = 1 and <![CDATA[ now() > strategy.start and now()< strategy.end ]]> then 1
+        WHEN strategy.status = 1 and <![CDATA[ now() > strategy.end ]]> then 2
+        <!-- 参看枚举FalStrategyStatus状态映射 -->
+        ELSE strategy.status
+        END as status,
+        strategy.create_time,
+        strategy.last_mod_time,
+
+        strategy.creative_id,
+        creative.creative_name,
+        creative.remark,
+        creative.dest_url,
+
+        creative.ad_space_position_id,
+        ad_space_position.platform_id,
+        ad_space_position.description as ad_space_position_desc,
+
+        ad_space_position.ad_format_id,
+        strategy_platform.name,
+
+        strategy.target_id,
+        target.target_value,
+        target.uid as target_uid
+
+        from strategy strategy
+        LEFT join target target on strategy.target_id = target.tid
+        left join creative creative on strategy.creative_id = creative.id
+        left join ad_space_position ad_space_position on ad_space_position.id = creative.ad_space_position_id
+        left join strategy_platform strategy_platform on strategy_platform.id = ad_space_position.platform_id
+        where strategy.sid = #{sid}
+    </select>
+
+    <select id="strategy:select:one:simple" resultMap="mapper:strategy" useCache="true">
+        select
+        strategy.sid,
+        strategy.sname,
+        strategy.start,
+        strategy.end,
+        strategy.description as stratety_desc,
+        strategy.bid / 100 as bid,
+        strategy.campaign_id,
+        strategy.creative_id,
+        strategy.target_id,
+        CASE
+        WHEN strategy.status = 1 and <![CDATA[ now() < strategy.start ]]> then 0
+        WHEN strategy.status = 1 and <![CDATA[ now() > strategy.start and now()< strategy.end ]]> then 1
+        WHEN strategy.status = 1 and <![CDATA[ now() > strategy.end ]]> then 2
+        <!-- 参看枚举FalStrategyStatus状态映射 -->
+        ELSE strategy.status
+        END as status,
+        strategy.create_time,
+        strategy.last_mod_time
+        from strategy strategy
+        where strategy.sid = #{sid} and strategy.uid = #{uid}
+    </select>
+
+    <select id="strategy:list:page" resultMap="mapper:strategy" useCache="false">
+
+        select
+        strategy.sid,
+        strategy.sname,
+        strategy.start,
+        strategy.end,
+        strategy.description as stratety_desc,
+        strategy.bid/100/#{rate,jdbcType=DOUBLE} as bid,
+        strategy.campaign_id,
+        strategy.audit_msg,
+        CASE
+        WHEN strategy.status = 1 and <![CDATA[ now() < strategy.start ]]> then 0
+        WHEN strategy.status = 1 and <![CDATA[ now() > strategy.start and now()< strategy.end ]]> then 1
+        WHEN strategy.status = 1 and <![CDATA[ now() > strategy.end ]]> then 2
+        <!-- 参看枚举FalStrategyStatus状态映射 -->
+        ELSE strategy.status
+        END as status,
+        strategy.create_time,
+        strategy.last_mod_time,
+
+        strategy.creative_id,
+        creative.creative_name,
+        creative.remark,
+        creative.dest_url,
+
+        creative.ad_space_position_id,
+        ad_space_position.platform_id,
+        ad_space_position.description as ad_space_position_desc,
+
+        ad_space_position.ad_format_id,
+        strategy_platform.name,
+
+        strategy.target_id,
+        target.target_value,
+        target.uid as target_uid
+
+        from strategy strategy
+        LEFT join target target on strategy.target_id = target.tid
+        left join creative creative on strategy.creative_id = creative.id
+        left join ad_space_position ad_space_position on ad_space_position.id = creative.ad_space_position_id
+        left join strategy_platform strategy_platform on strategy_platform.id = ad_space_position.platform_id
+        <where>
+            strategy.campaign_id = #{campaignId}
+            <if test="(sname != null) or (sid != null and sid.size() > 0)">
+                and (
+                <if test="sid != null and sid.size() > 0">
+                    strategy.sid in
+                    <foreach collection="sid" index="index" item="item" open="(" separator="," close=")">
+                        #{item}
+                    </foreach>
+                </if>
+                <if test="sid != null and sid.size() > 0 and sname != null">
+                    OR
+                </if>
+                <if test="sname != null">
+                    strategy.sname like CONCAT('%',#{sname},'%')
+                </if>
+                )
+            </if>
+            <if test="status != null and status == 0">
+                and strategy.status = 1 and <![CDATA[ now() < strategy.start ]]>
+            </if>
+            <if test="status != null and status == 1">
+                and strategy.status = 1 and <![CDATA[ now() > strategy.start ]]> and <![CDATA[ now() < strategy.end ]]>
+            </if>
+            <if test="status != null and status == 2">
+                and strategy.status = 1 and <![CDATA[ now() > strategy.end ]]>
+            </if>
+            and strategy.status != -1
+            <if test="status != null and status > 2">
+                and strategy.status = #{status}
+            </if>
+        </where>
+        order by strategy.sid desc
+        <!--<if test="orderbyColumn != null">-->
+        <!--ORDER BY strategy.${orderbyColumn}-->
+        <!--</if>-->
+        <!--<if test="orderby != null">-->
+        <!--${orderby}-->
+        <!--</if>-->
+    </select>
+
+
+
+    <update id="strategy:update" flushCache="true">
+        update strategy
+        <set>
+            <if test="sname !=null">sname = #{sname},</if>
+            <if test="start !=null">start = #{start},</if>
+            <if test="end !=null">`end` = #{end},</if>
+            <if test="description !=null">description = #{description},</if>
+            <if test="bid !=null">bid = #{bid},</if>
+            <if test="creativeId != null">creative_id = #{creativeId}</if>
+            <if test="status != null">
+                <if test="status == 1 or status == 0 or status == 2">status = 1,</if>
+                <if test="status > 2 or status == -1">status = #{status},</if>
+            </if>
+        </set>
+        where sid = #{sid}
+    </update>
+
+    <select id="strategy:id:list" resultType="java.util.HashMap">
+        select sid,sname from strategy
+        where campaign_id = #{campaign_id}
+    </select>
+
+    <select id="strategy:time:range" resultType="java.util.HashMap">
+        select min(start) as start,max(end) as end
+        from strategy
+        where campaign_id = #{campaign_id} and status != -1
+    </select>
+
+    <insert id="strategy:insert:batch" parameterType="java.util.List">
+        INSERT INTO strategy (sid,sname,start,`end`,description,creative_id,bid,uid,campaign_id,target_id,status,create_time)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.sid},#{item.sname},#{item.start},#{item.end},#{item.description},#{item.creativeId},#{item.bid},#{item.uid},#{item.campaignId},#{item.targetId},#{item.status},#{item.createTime})
+        </foreach>
+    </insert>
+
+</mapper>

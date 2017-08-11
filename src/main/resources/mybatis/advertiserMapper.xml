@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="advertiserMapper">
+
+    <update id="advertiser:update:budget" parameterType="java.util.Map">
+        update advertiser set day_budget = #{day_budget,jdbcType=INTEGER},last_mod_time = now() where uid = #{uid,jdbcType=VARCHAR}
+    </update>
+
+    <!-- 根据代理商 查询广告主 支持名称查询 -->
+    <select id="advertiser:select:tree" resultType="com.falcon.dsp.jdbc.model.Tree">
+        SELECT a.uid id,a.uname name
+        FROM advertiser a
+        <where>
+			<if test="searchKeyword != null and searchKeyword != '' ">
+                a.uname LIKE concat('%',#{searchKeyword},'%')
+            </if>
+            AND a.agency_id = #{agencyId}
+			AND a.customer_status = 'CUSTOMERSTATUS_NORMAL'
+        </where>
+    </select>
+
+
+    <select id="advertiser:list:page" resultType="com.falcon.dsp.jdbc.model.AdvertiserTableModel">
+        select * from (SELECT
+          t.uid,
+          t.uname,
+          t.customer_status as customerStatus,
+		  ROUND(t.day_budget/100/#{rate,jdbcType=DOUBLE}) as dayBudget,
+          Sum(t1.balance)/100/#{rate,jdbcType=DOUBLE} as balance,
+          Sum(t1.daily_cost)/100/#{rate,jdbcType=DOUBLE} as dayCost,
+		  t.audit_msg,
+		  t.commission
+        FROM advertiser AS t
+        LEFT JOIN funds_realtime AS t1 ON t.uid = t1.uid and (t1.account_type='CASH' or t1.account_type='VIRTUAL')
+        where t.agency_id = #{agency_id,jdbcType=VARCHAR}
+		<if test="search_key != null and search_key != '' ">
+            and (t.uid = #{search_key,jdbcType=VARCHAR} or t.uname like '%${search_key}%')
+        </if>
+        GROUP BY
+          t.uid,
+          t.uname,
+          t.customer_status,
+          t.day_budget) b order by b.uid desc
+    </select>
+
+    <insert id="advertiser:insert" parameterType="com.falcon.dsp.rest.advertiser.response.GdtAdvertiser">
+			insert into advertiser(
+				uid,
+				customer_registration_type,
+				uname,
+				category,
+				industry_id,
+				corporation,
+				address,
+				corporation_licence,
+				contact_person,
+				contact_person_email,
+				contact_person_telephone,
+				contact_person_mobile,
+				individual_qualification,
+				certification,
+				site_url,
+				site_name,
+				zip_code,
+				company_area_code,
+				invoice_area_code,
+				rz_qq_number,
+				customer_status,
+				fund_status,
+				virfund_status,
+				qualification,
+				day_budget,
+				business_brand,
+				audit_msg,
+				industry_tree,
+				agency_id,
+				create_time,
+				last_mod_time,
+				icp_image_url
+			) values
+			(
+				#{uid,jdbcType=BIGINT},
+				#{customerRegistrationType,jdbcType=VARCHAR},
+				#{uname,jdbcType=VARCHAR},
+				#{category,jdbcType=BIGINT},
+				#{industryId,jdbcType=BIGINT},
+				#{corporation,jdbcType=VARCHAR},
+				#{address,jdbcType=VARCHAR},
+				#{corporationLicence,jdbcType=VARCHAR},
+				#{contactPerson,jdbcType=VARCHAR},
+				#{contactPersonEmail,jdbcType=VARCHAR},
+				#{contactPersonTelephone,jdbcType=VARCHAR},
+				#{contactPersonMobile,jdbcType=VARCHAR},
+				#{individualQualification,jdbcType=VARCHAR},
+				#{certification,jdbcType=VARCHAR},
+				#{siteUrl,jdbcType=VARCHAR},
+				#{siteName,jdbcType=VARCHAR},
+				#{zipCode,jdbcType=VARCHAR},
+				#{companyAreaCode,jdbcType=VARCHAR},
+				#{invoiceAreaCode,jdbcType=VARCHAR},
+				#{rzQqNumber,jdbcType=VARCHAR},
+				#{customerStatus,jdbcType=VARCHAR},
+				#{fundStatus,jdbcType=VARCHAR},
+				#{virfundStatus,jdbcType=VARCHAR},
+				#{qualificationStr,jdbcType=VARCHAR},
+				#{dayBudget,jdbcType=BIGINT},
+				#{businessBrand,jdbcType=VARCHAR},
+				#{auditMsg,jdbcType=VARCHAR},
+				#{industryTreeStr,jdbcType=VARCHAR},
+				#{agencyId},
+				now(),
+				now(),
+				#{icpImageUrl}
+			);
+    </insert>
+
+	<!-- 根据uid获取 -->
+    <select id="advertiser:selectone" resultType="advertiser">
+        select 
+	        uid,
+			customer_registration_type,
+			uname,
+			category,
+			industry_id,
+			corporation,
+			address,
+			corporation_licence,
+			contact_person,
+			contact_person_email,
+			contact_person_telephone,
+			contact_person_mobile,
+			individual_qualification,
+			certification,
+			site_url,
+			site_name,
+			zip_code,
+			company_area_code,
+			invoice_area_code,
+			rz_qq_number,
+			customer_status,
+			fund_status,
+			virfund_status,
+			qualification,
+			ad_qualification,
+			day_budget,
+			business_brand,
+			audit_msg,
+			industry_tree,
+			agency_id,
+			create_time,
+			icp_image_url,
+			commission,
+			last_mod_time
+		from advertiser
+		where uid = #{uid}
+    </select>
+    
+    
+    <!-- 验证广告主名称（uname）重复 -->
+    <select id="advertiser:check:uname" resultType="int">
+        SELECT count(1)
+        FROM advertiser
+        <where>
+          <if test="uid != null">
+              uid != #{uid}
+          </if>
+            AND uname = #{uname}
+        </where>
+    </select>
+    
+    <!-- 验证公司名称（corporation）重复 -->
+    <select id="advertiser:check:corporation" resultType="int">
+        SELECT count(1)
+        FROM advertiser
+        <where>
+          <if test="uid != null">
+              uid != #{uid}
+          </if>
+            AND corporation = #{corporation}
+        </where>
+    </select>
+    <!-- 更新 -->
+    <update id="advertiser:update">
+        UPDATE advertiser
+        set
+	        <if test="uid !=null and uid !=''">
+	            uid = #{uid,jdbcType=BIGINT}, 
+	        </if>
+	        <if test="customerRegistrationType !=null and customerRegistrationType !=''">
+				customer_registration_type = #{customerRegistrationType,jdbcType=VARCHAR},  
+	        </if>
+	        <if test="uname !=null and uname !=''">
+				uname = #{uname,jdbcType=VARCHAR},                                     
+	        </if>
+	        <if test="category !=null and category !=''">                                     
+				category = #{category,jdbcType=BIGINT},                   
+	        </if>
+	        <if test="industryId !=null and industryId !=''">                                                        
+				industry_id = #{industryId,jdbcType=BIGINT},                 
+	        </if>
+	        <if test="corporation !=null and corporation !=''">                                                                         
+				corporation = #{corporation,jdbcType=VARCHAR},               
+	        </if>
+	        <if test="address !=null and address !=''">                                                                                        
+				address = #{address,jdbcType=VARCHAR},                   
+	        </if>
+	        <if test="corporationLicence !=null and corporationLicence !=''">                                                                                                           
+				corporation_licence = #{corporationLicence,jdbcType=VARCHAR},        
+	        </if>
+	        <if test="contactPersonTelephone !=null and contactPersonTelephone !=''">                                                                                                                   			                 
+				contact_person_telephone = #{contactPersonTelephone,jdbcType=VARCHAR},    
+	        </if>
+	        <if test="individualQualification !=null and individualQualification !=''">                                                                                                                   			                            
+				individual_qualification = #{individualQualification,jdbcType=VARCHAR},   
+	        </if>
+	        <if test="certification !=null and certification !=''">                                                                                                                   			                     
+				certification = #{certification,jdbcType=VARCHAR},                    
+	        </if>
+	        <if test="siteUrl !=null and siteUrl !=''">                                                                                                                   			                     
+				site_url = #{siteUrl,jdbcType=VARCHAR},                          
+	        </if>
+	        <if test="siteName !=null and siteName !=''">                                                                                                                   			                     
+				site_name = #{siteName,jdbcType=VARCHAR},                         
+	        </if>
+	        <if test="zipCode !=null and zipCode !=''">                                                                                                                   			                     
+				zip_code = #{zipCode,jdbcType=VARCHAR},                          
+	        </if>
+	        <if test="companyAreaCode !=null and companyAreaCode !=''">                                                                                                                   			                     
+				company_area_code = #{companyAreaCode,jdbcType=VARCHAR},                  
+	        </if>
+	        <if test="invoiceAreaCode !=null and invoiceAreaCode !=''">                                                                                                                   			                     
+				invoice_area_code = #{invoiceAreaCode,jdbcType=VARCHAR},                  
+	        </if>
+	        <if test="rzQqNumber !=null and rzQqNumber !=''">                                                                                                                   			                     
+				rz_qq_number = #{rzQqNumber,jdbcType=VARCHAR},                       
+	        </if>
+	        <if test="customerStatus !=null and customerStatus !=''">                                                                                                                   			                     
+				customer_status = #{customerStatus,jdbcType=VARCHAR},                   
+	        </if>
+	        <if test="fundStatus !=null and fundStatus !=''">                                                                                                                   			                     
+				fund_status = #{fundStatus,jdbcType=VARCHAR},                       
+	        </if>
+	        <if test="virfundStatus !=null and virfundStatus !=''">                                                                                                                   			                     
+				virfund_status = #{virfundStatus,jdbcType=VARCHAR},                    
+	        </if>
+	        <if test="adQualification !=null and adQualification !=''">                                                                                                                   			                     
+				ad_qualification = #{adQualification,jdbcType=VARCHAR},           
+	        </if>
+	        <if test="dayBudget !=null and dayBudget !=''">                                                                                                                   			                     
+				day_budget = #{dayBudget,jdbcType=BIGINT},                  
+	        </if>
+	        <if test="businessBrand !=null and businessBrand !=''">                                                                                                                   			                     
+				business_brand = #{businessBrand,jdbcType=VARCHAR},             
+	        </if>
+	        <if test="auditMsg !=null and auditMsg !=''">                                                                                                                   			                     
+				audit_msg = #{auditMsg,jdbcType=VARCHAR},                  
+	        </if>
+	        <if test="industryTreeStr !=null and industryTreeStr !=''">                                                                                                                   			                     
+				industry_tree = #{industryTreeStr,jdbcType=VARCHAR},                                                       
+	        </if>                                                                                                                			                     
+	        <if test="icpImageUrl !=null and icpImageUrl !=''">                                                                                                                   			                     
+				icp_image_url = #{icpImageUrl,jdbcType=VARCHAR},                                                       
+	        </if>                                                                                                                                                           			                     
+				qualification = #{qualificationStr,jdbcType=VARCHAR},                                                                                                                 
+				contact_person = #{contactPerson,jdbcType=VARCHAR}, 
+				contact_person_mobile = #{contactPersonMobile,jdbcType=VARCHAR},  
+				contact_person_email = #{contactPersonEmail,jdbcType=VARCHAR},
+				last_mod_time= now()      
+				WHERE uid = #{uid};
+    </update>
+    
+    
+    <!-- 插入 -->
+    <insert id="advertiser:insertone">
+			insert into advertiser(
+				uid,
+				customer_registration_type,
+				uname,
+				category,
+				industry_id,
+				corporation,
+				address,
+				corporation_licence,
+				contact_person,
+				contact_person_email,
+				contact_person_telephone,
+				contact_person_mobile,
+				individual_qualification,
+				certification,
+				site_url,
+				site_name,
+				zip_code,
+				company_area_code,
+				invoice_area_code,
+				rz_qq_number,
+				customer_status,
+				fund_status,
+				virfund_status,
+				qualification,
+				ad_qualification,
+				day_budget,
+				business_brand,
+				audit_msg,
+				industry_tree,
+				agency_id,
+				create_time,
+				last_mod_time,
+				icp_image_url,
+				commission
+			) values
+			(
+				#{uid},
+				#{customerRegistrationType},
+				#{uname},
+				#{category},
+				#{industryId},
+				#{corporation},
+				#{address},
+				#{corporationLicence},
+				#{contactPerson},
+				#{contactPersonEmail},
+				#{contactPersonTelephone},
+				#{contactPersonMobile},
+				#{individualQualification},
+				#{certification},
+				#{siteUrl},
+				#{siteName},
+				#{zipCode},
+				#{companyAreaCode},
+				#{invoiceAreaCode},
+				#{rzQqNumber},
+				#{customerStatus},
+				#{fundStatus},
+				#{virfundStatus},
+				#{qualificationStr},
+				#{adQualification},
+				#{dayBudget},
+				#{businessBrand},
+				#{auditMsg},
+				#{industryTreeStr},
+				#{agencyId},
+				now(),
+				now(),
+				#{icpImageUrl},
+				#{commission}
+			)
+    </insert>
+
+	<select id="advertiser:select:uid:list" resultType="java.lang.Integer">
+		SELECT a.uid
+		FROM advertiser a
+		<where>
+			a.agency_id = #{agencyId}
+		</where>
+	</select>
+</mapper>

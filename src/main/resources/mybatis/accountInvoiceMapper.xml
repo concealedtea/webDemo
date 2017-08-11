@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="accountInvoiceMapper">
+
+    <insert id="accountInvoice:insert">
+        insert into account_invoice(uid,account_type,current_balance,balance,agency_account,trans_type,trans_time,bill_no,amount,description,target_type,remark)
+        values ( #{uid}, #{accountType},#{currentBalance},#{balance},#{agencyAccount},#{transType},#{transTime},#{billNo},#{amount},#{description},#{targetType},#{remark})
+    </insert>
+
+    <select id="accountInvoice:select:list:page" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT
+        t.uid,
+        DATE_FORMAT(
+        from_unixtime(t.trans_time),'%Y-%m-%d') AS trans_time,
+        CASE
+        WHEN t.trans_type = 'TRANSFER_IN' AND t.target_type = 1
+        AND t.agency_account = #{agencyId,jdbcType=INTEGER} THEN
+        t.amount / 100 /#{rate,jdbcType=DOUBLE}
+        WHEN t.trans_type = 'TRANSFER_OUT' AND t.target_type = 2
+        AND t.uid = #{agencyId,jdbcType=INTEGER} THEN
+        t.amount / 100 /#{rate,jdbcType=DOUBLE}
+        ELSE
+        0
+        END transfer_out,
+        CASE
+        WHEN t.trans_type = 'TRANSFER_OUT' AND t.target_type = 1
+        AND t.agency_account = #{agencyId,jdbcType=INTEGER} THEN
+        t.amount / 100 /#{rate,jdbcType=DOUBLE}
+        WHEN t.trans_type = 'TRANSFER_IN' AND t.target_type = 2
+        AND t.uid = #{agencyId,jdbcType=INTEGER} THEN
+        t.amount / 100 /#{rate,jdbcType=DOUBLE}
+        ELSE
+        0
+        END transfer_in,
+        t.description
+        FROM
+        account_invoice t
+        WHERE
+        1 = 1
+        <if test="startDate!=''">
+            and t.trans_time &gt;= unix_timestamp(STR_TO_DATE(#{startDate,jdbcType=VARCHAR},'%Y-%m-%d'))
+        </if>
+
+        <if test="endDate!=''">
+           and t.trans_time &lt; unix_timestamp(STR_TO_DATE(#{endDate,jdbcType=VARCHAR},'%Y-%m-%d')+1)
+        </if>
+        <if test="accountType!=''">
+          and t.account_type = #{accountType,jdbcType=VARCHAR}
+        </if>
+        and (t.agency_account = #{agencyId,jdbcType=INTEGER} or t.uid =  #{agencyId,jdbcType=INTEGER})
+        order by t.trans_time desc
+    </select>
+
+    <select id="accountInvoice:agency:list:page" resultType="com.falcon.dsp.jdbc.model.FinanceFlowModel">
+        SELECT
+        DATE_FORMAT( from_unixtime(t.trans_time), '%Y-%m-%d') AS trans_time,
+        CASE
+        WHEN t.trans_type = 'TRANSFER_OUT' THEN
+        t.amount / 100 ELSE 0 END trans_in,
+        CASE WHEN t.trans_type = 'TRANSFER_IN' THEN
+        t.amount / 100 ELSE 0 END trans_out,
+        IFNULL(t.remark,'') as description
+        FROM
+        account_invoice t
+        <where>
+        <if test="startDate != null and startDate != '' ">
+            and t.trans_time &gt;= unix_timestamp(STR_TO_DATE(#{startDate,jdbcType=VARCHAR},'%Y-%m-%d'))
+        </if>
+        <if test="endDate != null and endDate != '' ">
+            and t.trans_time &lt; unix_timestamp(STR_TO_DATE(#{endDate,jdbcType=VARCHAR},'%Y-%m-%d')+1)
+        </if>
+        <if test="accountType != null and accountType != '' ">
+            and t.account_type = #{accountType,jdbcType=VARCHAR}
+        </if>
+         and t.target_type = 2
+
+        </where>
+        order by t.trans_time desc
+    </select>
+</mapper>

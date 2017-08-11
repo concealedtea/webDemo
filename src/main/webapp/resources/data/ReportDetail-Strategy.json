@@ -1,0 +1,23 @@
+{
+  "meta":{"success":true,"message":"ok"},
+  "data":{"list":[
+    {"key" : "1001","ctr" : 0.19,"cost" : 19.23,"ecpm" : 1.81,"ecpc" : 0.14,"view_count" : 113123,"click_count" : 1131},
+    {"key" : "1002","ctr" : 0.19,"cost" : 19.23,"ecpm" : 1.81,"ecpc" : 0.14,"view_count" : 113123,"click_count" : 1131},
+    {"key" : "1003","ctr" : 0.29,"cost" : 29.23,"ecpm" : 2.81,"ecpc" : 0.24,"view_count" : 123123,"click_count" : 1231},
+    {"key" : "1004","ctr" : 0.39,"cost" : 39.23,"ecpm" : 3.81,"ecpc" : 0.34,"view_count" : 133123,"click_count" : 1331},
+    {"key" : "1005","ctr" : 0.49,"cost" : 49.23,"ecpm" : 4.81,"ecpc" : 0.44,"view_count" : 143123,"click_count" : 1431},
+    {"key" : "1006","ctr" : 0.59,"cost" : 59.23,"ecpm" : 5.81,"ecpc" : 0.54,"view_count" : 153123,"click_count" : 1531},
+    {"key" : "1007","ctr" : 0.69,"cost" : 69.23,"ecpm" : 6.81,"ecpc" : 0.64,"view_count" : 163123,"click_count" : 1631},
+    {"key" : "1008","ctr" : 0.79,"cost" : 79.23,"ecpm" : 7.81,"ecpc" : 0.74,"view_count" : 173123,"click_count" : 1731},
+    {"key" : "1009","ctr" : 0.89,"cost" : 89.23,"ecpm" : 8.81,"ecpc" : 0.84,"view_count" : 183123,"click_count" : 1831},
+    {"key" : "1011","ctr" : 0.99,"cost" : 99.23,"ecpm" : 9.81,"ecpc" : 0.94,"view_count" : 193123,"click_count" : 1931},
+    {"key" : "1012","ctr" : 0.09,"cost" : 19.23,"ecpm" : 0.81,"ecpc" : 0.04,"view_count" : 103123,"click_count" : 1031},
+    {"key" : "1013","ctr" : 0.19,"cost" : 29.23,"ecpm" : 1.81,"ecpc" : 0.14,"view_count" : 113123,"click_count" : 1131},
+    {"key" : "1014","ctr" : 0.29,"cost" : 39.23,"ecpm" : 2.81,"ecpc" : 0.24,"view_count" : 123123,"click_count" : 1231},
+    {"key" : "1015","ctr" : 0.39,"cost" : 49.23,"ecpm" : 3.81,"ecpc" : 0.34,"view_count" : 133123,"click_count" : 1331},
+    {"key" : "1016","ctr" : 0.49,"cost" : 59.23,"ecpm" : 4.81,"ecpc" : 0.44,"view_count" : 143123,"click_count" : 1431},
+    {"key" : "1017","ctr" : 0.19,"cost" : 19.23,"ecpm" : 1.81,"ecpc" : 0.14,"view_count" : 113123,"click_count" : 1131},
+    {"key" : "1017","ctr" : 0.29,"cost" : 29.23,"ecpm" : 2.81,"ecpc" : 0.24,"view_count" : 123123,"click_count" : 1231},
+    {"key" : "1018","ctr" : 0.39,"cost" : 39.23,"ecpm" : 3.81,"ecpc" : 0.34,"view_count" : 133123,"click_count" : 1331}
+  ]}
+}

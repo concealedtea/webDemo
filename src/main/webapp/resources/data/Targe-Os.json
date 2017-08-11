@@ -1,0 +1,26 @@
+[
+  {
+    "name": "苹果系统",
+    "value": "IOS"
+  },
+  {
+    "name": "安卓系统",
+    "value": "ANDROID"
+  },
+  {
+    "name": "微软系统",
+    "value": "WINDOWS"
+  },
+  {
+    "name": "塞班系统",
+    "value": "SYMBIAN"
+  },
+  {
+    "name": "爪哇系统",
+    "value": "JAVA"
+  },
+  {
+    "name": "未知",
+    "value": "OS_UNKNOWN"
+  }
+]

@@ -1,0 +1,106 @@
+{
+    "recordsTotal": 167,
+    "recordsFiltered": 167,
+    "data": [
+        {
+           "sid": "10001",
+           "sname": "策略demo1",
+           "status": "1",
+           "bid":0.23,
+           "strategy_platform":{"name":"123","description":"1223"},
+           "ad_space_position":{"description":"1223"},
+           "creative":{"id":"12","creative_name":"1212"},
+           "target":{"targetValue":"123"}
+        },
+      {
+        "sid": "10001",
+        "sname": "策略demo1",
+        "status": "1",
+        "bid":0.23,
+        "strategy_platform":{"name":"123","description":"1223"},
+        "ad_space_position":{"description":"1223"},
+        "creative":{"id":"12","creative_name":"1212"},
+        "target":{"targetValue":"123"}
+      },
+      {
+        "sid": "10001",
+        "sname": "策略demo1",
+        "status": "1",
+        "bid":0.23,
+        "strategy_platform":{"name":"123","description":"1223"},
+        "ad_space_position":{"description":"1223"},
+        "creative":{"id":"12","creative_name":"1212"},
+        "target":{"targetValue":"123"}
+      },
+      {
+        "sid": "10001",
+        "sname": "策略demo1",
+        "status": "1",
+        "bid":0.23,
+        "strategy_platform":{"name":"123","description":"1223"},
+        "ad_space_position":{"description":"1223"},
+        "creative":{"id":"12","creative_name":"1212"},
+        "target":{"targetValue":"123"}
+      },
+      {
+        "sid": "10001",
+        "sname": "策略demo1",
+        "status": "1",
+        "bid":0.23,
+        "strategy_platform":{"name":"123","description":"1223"},
+        "ad_space_position":{"description":"1223"},
+        "creative":{"id":"12","creative_name":"1212"},
+        "target":{"targetValue":"123"}
+      },
+      {
+        "sid": "10001",
+        "sname": "策略demo1",
+        "status": "1",
+        "bid":0.23,
+        "strategy_platform":{"name":"123","description":"1223"},
+        "ad_space_position":{"description":"1223"},
+        "creative":{"id":"12","creative_name":"1212"},
+        "target":{"targetValue":"123"}
+      },
+      {
+        "sid": "10001",
+        "sname": "策略demo1",
+        "status": "1",
+        "bid":0.23,
+        "strategy_platform":{"name":"123","description":"1223"},
+        "ad_space_position":{"description":"1223"},
+        "creative":{"id":"12","creative_name":"1212"},
+        "target":{"targetValue":"123"}
+      },
+      {
+        "sid": "10001",
+        "sname": "策略demo1",
+        "status": "1",
+        "bid":0.23,
+        "strategy_platform":{"name":"123","description":"1223"},
+        "ad_space_position":{"description":"1223"},
+        "creative":{"id":"12","creative_name":"1212"},
+        "target":{"targetValue":"123"}
+      },
+      {
+        "sid": "10001",
+        "sname": "策略demo1",
+        "status": "1",
+        "bid":0.23,
+        "strategy_platform":{"name":"123","description":"1223"},
+        "ad_space_position":{"description":"1223"},
+        "creative":{"id":"12","creative_name":"1212"},
+        "target":{"targetValue":"123"}
+      },
+      {
+        "sid": "10001",
+        "sname": "策略demo1",
+        "status": "1",
+        "bid":0.23,
+        "strategy_platform":{"name":"123","description":"1223"},
+        "ad_space_position":{"description":"1223"},
+        "creative":{"id":"12","creative_name":"1212"},
+        "target":{"targetValue":"123"}
+      }
+    ]
+}

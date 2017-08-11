@@ -1,0 +1,123 @@
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+
+	<!-- spring框架必须定义ContextLoaderListener，在启动Web容器时，自动装配Spring applicationContext.xml的配置信息 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- 编码格式为UTF-8 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>SessionFilter</filter-name>
+		<filter-class>com.falcon.dsp.interceptor.SessionFilter</filter-class>
+		<init-param>
+			<description>用户未登录则将请求重定向到该 url</description>
+			<param-name>redirectUrl</param-name>
+			<param-value>/login.shtml</param-value>
+		</init-param>
+
+		<init-param>
+			<description>不需要进行拦截的 url的正则表达式</description>
+			<param-name>excepUrlRegex</param-name>
+			<!-- 不拦截 /resources/* 和 /upload/* login.jsp /userInfo/login.shtml /userInfo/login.shtml -->
+			<param-value>/(resources/*|upload/*|login.shtml|entry.shtml|logout.shtml|create.shtml|druid/*)</param-value>
+		</init-param>
+
+	</filter>
+	<filter-mapping>
+		<filter-name>SessionFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<context-param>
+		<!-- 指定Spring上下文配置文件 -->
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:applicationContext.xml</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>Dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<!-- 指定SpringMVC配置文件 -->
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/springmvc.xml</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<!-- 指定请求的后缀，可以随意写，这里用.html作为请求后缀 -->
+		<servlet-name>Dispatcher</servlet-name>
+		<url-pattern>*.shtml</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>/resources/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>/upload/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- druid console -->
+
+	<filter>
+		<filter-name>DruidWebStatFilter</filter-name>
+		<filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
+		<init-param>
+			<param-name>exclusions</param-name>
+			<param-value>*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>DruidWebStatFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>DruidStatView</servlet-name>
+		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+		<init-param>
+			<param-name>loginUsername</param-name>
+			<param-value>yudb</param-value>
+		</init-param>
+		<init-param>
+			<param-name>loginPassword</param-name>
+			<param-value>falcon</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DruidStatView</servlet-name>
+		<url-pattern>/druid/*</url-pattern>
+	</servlet-mapping>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/common/404.shtml</location>
+	</error-page>
+
+	<welcome-file-list>
+		<welcome-file>index.shtml</welcome-file>
+	</welcome-file-list>
+
+</web-app>

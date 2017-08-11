@@ -1,0 +1,17 @@
+{
+  "meta":{"success":true,"message":"ok"},
+  "data":{
+    "cid":189071,
+    "cname":"test_0516",
+    "create_time":"2016-05-16 15:20:06",
+    "day_budget":100,
+    "end":"2016-06-16 23:59:59",
+    "last_mod_time":"2016-05-16 15:19:54",
+    "speed_mode":0,
+    "start":"2016-05-16 00:00:00",
+    "status":1,
+    "strategy_count":1,
+    "uid":59881,
+    "uname":"妖姬"
+  }
+}

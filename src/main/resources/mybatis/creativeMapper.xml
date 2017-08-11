@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="creativeMapper">
+
+    <resultMap id="creativeMap" type="com.falcon.dsp.jdbc.model.CreativeModel">
+        <result property="creativeId" column="id"/>
+        <result property="creativeName" column="creative_name"/>
+        <result property="destUrl" column="dest_url"/>
+        <result property="remark" column="remark"/>
+        <result property="campaignId" column="cid"/>
+        <result property="strategyId" column="strategy_id"/>
+        <result property="adSpacePositionId" column="ad_space_position_id"/>
+        <collection property="materials" column="id" ofType="com.falcon.dsp.jdbc.entity.Material" select="materialMapper.material:select:list"/>
+    </resultMap>
+
+    <insert id="creative:insert" parameterType="creative" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO creative(creative_name,uid,cid,ad_space_position_id,remark,dest_url,status,create_time)
+        VALUES(#{creativeName},#{uid},#{cid},#{adSpacePositionId},#{remark},#{destUrl},#{status},now())
+    </insert>
+
+    <select id="creative:select" resultType="creative">
+        SELECT c.id,c.creative_name,c.uid,s.sid strategy_id,c.cid,c.ad_space_position_id,c.remark,c.dest_url,c.status,c.create_time
+        FROM creative c
+        LEFT JOIN strategy s
+        ON s.creative_id = c.id
+        WHERE c.id = #{creativeId}
+    </select>
+
+    <!-- 验证名称重复 -->
+    <select id="creative:check:name" resultType="int">
+        SELECT count(1)
+        FROM creative
+        <where>
+          <if test="id != null">
+              id != #{id}
+          </if>
+            AND creative_name = #{creativeName}
+            AND uid = #{uid}
+            AND status != -2
+        </where>
+    </select>
+
+    <select id="creative:platform:select:one" resultType="java.lang.String">
+        SELECT sp.value FROM creative c
+        JOIN ad_space_position asp ON c.ad_space_position_id = asp.id
+        JOIN strategy_platform sp ON asp.platform_id = sp.id
+        WHERE c.id = #{creative_id}
+    </select>
+
+    <select id="creative:select:one" resultMap="creativeMap">
+        SELECT c.id,c.cid,s.sid strategy_id,c.creative_name,c.remark,c.ad_space_position_id,c.dest_url
+        FROM creative c
+        LEFT JOIN strategy s
+        ON s.creative_id = c.id
+        where c.id = #{id}
+    </select>
+
+    <select id="creative:select:list:page" resultType="creativeListModel">
+        SELECT
+            c.id creative_id,
+            c.creative_name,
+            asp.ad_format,
+            if(s.sid, true, false) relation,
+            concat(
+              asp.platform,
+              "-",
+              asp.description
+            ) platform,
+            c.dest_url
+        FROM
+            creative c
+        JOIN (
+            select
+                sp.id,
+                p.name platform,
+                sp.platform_id,
+                f.name ad_format,
+                sp.description
+            FROM
+                ad_space_position sp
+            JOIN strategy_platform p ON p.id = sp.platform_id
+            JOIN ad_format f ON f.id = sp.ad_format_id
+        ) asp on asp.id = c.ad_space_position_id
+        LEFT JOIN strategy s
+        ON s.creative_id = c.id
+        <where>
+            <if test="searchKeyword != null">
+              (c.id LIKE concat('%',#{searchKeyword},'%')
+              OR c.creative_name LIKE concat('%',#{searchKeyword},'%'))
+            </if>
+            AND c.status NOT IN(-2)
+            <if test="cid != null">
+                AND c.cid = #{cid}
+            </if>
+            <if test="filter">
+                <choose>
+                    <when test="strategyId != null">
+                        AND sid = #{strategyId}
+                    </when>
+                    <otherwise>
+                        AND s.sid is null
+                    </otherwise>
+                </choose>
+            </if>
+        </where>
+        ORDER BY c.id desc
+    </select>
+
+    <update id="creative:update">
+        UPDATE creative
+        <set>
+            <if test="creativeName != null and creativeName != ''">
+                creative_name = #{creativeName},
+            </if>
+            <if test="adSpacePositionId != null">
+                ad_space_position_id = #{adSpacePositionId},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="destUrl != null and destUrl != ''">
+                dest_url = #{destUrl},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            last_mod_time = now()
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 创意的广告形式 -->
+    <select id="creative:ad:format" resultType="String">
+        SELECT af.name from creative c
+        JOIN ad_space_position sp
+        ON c.ad_space_position_id = sp.id
+        JOIN ad_format af
+        ON af.id = sp.ad_format_id
+        WHERE c.id = #{creativeId}
+    </select>
+
+    <insert id="creative:insert:return:id">
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+        INSERT INTO creative(creative_name,uid,cid,ad_space_position_id,remark,dest_url,status,create_time)
+        VALUES(#{creativeName},#{uid},#{cid},#{adSpacePositionId},#{remark},#{destUrl},#{status},now())
+    </insert>
+</mapper>

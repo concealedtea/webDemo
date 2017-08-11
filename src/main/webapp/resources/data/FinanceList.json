@@ -1,0 +1,66 @@
+{
+    "recordsTotal": 167,
+    "recordsFiltered": 167,
+    "data": [
+        {
+           "time":"2016/03/29",
+           "type":"现金",
+           "amount":20000,
+           "remark":"test备注"
+        },
+      {
+        "time":"2016/03/29",
+        "type":"现金",
+        "amount":20000,
+        "remark":"test备注"
+      },
+      {
+        "time":"2016/03/29",
+        "type":"现金",
+        "amount":20000,
+        "remark":"test备注"
+      },
+      {
+        "time":"2016/03/29",
+        "type":"现金",
+        "amount":20000,
+        "remark":"test备注"
+      },
+      {
+        "time":"2016/03/29",
+        "type":"现金",
+        "amount":20000,
+        "remark":"test备注"
+      },
+      {
+        "time":"2016/03/29",
+        "type":"现金",
+        "amount":20000,
+        "remark":"test备注"
+      },
+      {
+        "time":"2016/03/29",
+        "type":"现金",
+        "amount":20000,
+        "remark":"test备注"
+      },
+      {
+        "time":"2016/03/29",
+        "type":"现金",
+        "amount":20000,
+        "remark":"test备注"
+      },
+      {
+        "time":"2016/03/29",
+        "type":"现金",
+        "amount":20000,
+        "remark":"test备注"
+      },
+      {
+        "time":"2016/03/29",
+        "type":"现金",
+        "amount":20000,
+        "remark":"test备注"
+      }
+    ]
+}

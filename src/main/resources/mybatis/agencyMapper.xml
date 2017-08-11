@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="agencyMapper">
+
+    <select id="agency:one:data" resultType="agency">
+        select id,name,balance_cash/100 as balance_cash,balance_virtual/100 as balance_virtual,status,phone_no,email,contact_name,
+        DATE_FORMAT(create_time, '%Y.%d.%m %h:%i:%s') as create_time,
+        DATE_FORMAT(last_mod_time, '%Y.%d.%m %h:%i:%s') as last_mod_time,
+        commission
+        from agency
+        where id = #{id}
+    </select>
+
+    <update id="agency:update:balance">
+        UPDATE agency SET
+            <if test='account_type == "CASH"'>
+                balance_cash = balance_cash + (#{amount}),
+            </if>
+            <if test='account_type == "VIRTUAL"'>
+                balance_virtual = balance_virtual + (#{amount}),
+            </if>
+            last_mod_time = now()
+        WHERE
+            id = #{agency_id}
+    </update>
+
+
+    <select id="agency:list:page" resultType="com.falcon.dsp.jdbc.model.AgencyModel">
+        SELECT
+        t.id,
+        t.`name`,
+        t.balance_cash / 100 AS balance_cash,
+        t.balance_virtual / 100 AS balance_virtual,
+        t.`status`,
+        t.commission,
+        CASE
+        WHEN t.`status` = - 1 THEN
+        '无效'
+        WHEN t.`status` = 1 THEN
+        '有效'
+        ELSE
+        '无效'
+        END status_name,
+        (
+        SELECT
+        count(1)
+        FROM
+        advertiser
+        WHERE
+        agency_id = t.id
+        ) AS advertiserNumber
+        FROM agency AS t
+         <where>
+          <if test="search_key != null and search_key != '' ">
+             (t.id = #{search_key,jdbcType=VARCHAR} or  t.`name` like '%${search_key}%')
+          </if>
+         </where>
+        order by t.id desc
+    </select>
+
+    <insert id="agency:add" parameterType="agency">
+        INSERT INTO agency(
+        <if test="name != null">
+          `name`,
+        </if>
+        <if test="status != null">
+          `status`,
+        </if>
+        <if test="phoneNo != null">
+          `phone_no`,
+        </if>
+        <if test="email != null">
+          `email`,
+        </if>
+        <if test="contactName != null">
+           `contact_name`,
+        </if>
+        <if test="commission != null">
+            `commission`,
+        </if>
+        create_time,balance_cash,balance_virtual) VALUES (
+
+        <if test="name != null">
+            #{name,jdbcType=VARCHAR},
+        </if>
+        <if test="status != null">
+            #{status,jdbcType=INTEGER},
+        </if>
+        <if test="phoneNo != null">
+            #{phoneNo,jdbcType=VARCHAR},
+        </if>
+        <if test="email != null">
+            #{email,jdbcType=VARCHAR},
+        </if>
+        <if test="contactName != null">
+            #{contactName,jdbcType=VARCHAR},
+        </if>
+        <if test="commission != null">
+            #{commission,jdbcType=INTEGER},
+        </if>
+        now(),0,0
+        )
+    </insert>
+
+    <select id="agency:list:select" resultType="agency">
+        select t.id,t.name from agency t
+        WHERE
+        NOT EXISTS(
+          SELECT 1 FROM user_info t1
+          WHERE t.id = t1.uid
+          and t1.user_role = "AGENCY"
+        )
+    </select>
+
+    <update id="agency:update" parameterType="agency">
+        update agency
+
+        set
+        <if test="name != null and name != '' ">
+          `name` =  #{name,jdbcType=VARCHAR},
+        </if>
+
+        <if test="balanceCash != null and balanceCash != '' ">
+            balance_cash = #{balanceCash,jdbcType=INTEGER},
+        </if>
+
+        <if test="balanceVirtual != null and balanceVirtual != '' ">
+            balance_virtual = #{balanceVirtual,jdbcType=INTEGER},
+        </if>
+
+        <if test="status != null and status != '' ">
+            status =#{status,jdbcType=INTEGER},
+        </if>
+
+        <if test="phoneNo != null and phoneNo != '' ">
+            phone_no = #{phoneNo,jdbcType=VARCHAR},
+        </if>
+
+        <if test="email != null and email != '' ">
+            email = #{email,jdbcType=VARCHAR},
+        </if>
+
+        <if test="contactName != null and contactName != '' ">
+            contact_name = #{contactName,jdbcType=VARCHAR},
+        </if>
+
+         last_mod_time = now()
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="agency:select:sum:finance" resultType="agency">
+        select sum(balance_cash)/100 AS balance_cash ,  sum(balance_virtual)/100 as balance_virtual from agency
+    </select>
+
+    <select id="agency:check:name"  resultType="int">
+        SELECT count(1)
+        FROM agency
+        <where>
+            <if test="id != null">
+                id != #{id}
+            </if>
+            AND name = #{name}
+        </where>
+    </select>
+</mapper>

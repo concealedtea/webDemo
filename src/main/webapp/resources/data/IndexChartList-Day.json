@@ -1,0 +1,609 @@
+{
+  "meta": {
+    "success": true,
+    "message": "ok"
+  },
+  "data": {
+    "total": {
+      "ctr": 1.49,
+      "cost": 1904065.27,
+      "ecpm": 18.49,
+      "ecpc": 1.24,
+      "view_count": 102974819,
+      "click_count": 1533271
+    },
+    "gender": [
+      {
+        "key": "未知性别",
+        "ctr": 0,
+        "cost": 3.69,
+        "ecpm": 0,
+        "ecpc": 0.62,
+        "view_count": 0,
+        "click_count": 6
+      },
+      {
+        "key": "男",
+        "ctr": 1.48,
+        "cost": 2031596.18,
+        "ecpm": 18.23,
+        "ecpc": 1.23,
+        "view_count": 111449642,
+        "click_count": 1651090
+      },
+      {
+        "key": "女",
+        "ctr": 0.63,
+        "cost": 992.76,
+        "ecpm": 4.74,
+        "ecpc": 0.75,
+        "view_count": 209411,
+        "click_count": 1326
+      }
+    ],
+    "area": [
+      {
+        "key": "北京",
+        "ctr": 1.31,
+        "cost": 41792.55,
+        "ecpm": 17,
+        "ecpc": 1.3,
+        "view_count": 2458019,
+        "click_count": 32112
+      },
+      {
+        "key": "天津",
+        "ctr": 1.51,
+        "cost": 24640.75,
+        "ecpm": 19.5,
+        "ecpc": 1.29,
+        "view_count": 1263616,
+        "click_count": 19069
+      },
+      {
+        "key": "河北",
+        "ctr": 1.55,
+        "cost": 86743.6,
+        "ecpm": 16.58,
+        "ecpc": 1.07,
+        "view_count": 5230969,
+        "click_count": 81180
+      },
+      {
+        "key": "山西",
+        "ctr": 1.32,
+        "cost": 36805.46,
+        "ecpm": 14,
+        "ecpc": 1.06,
+        "view_count": 2628248,
+        "click_count": 34753
+      },
+      {
+        "key": "内蒙古",
+        "ctr": 1.61,
+        "cost": 22753.55,
+        "ecpm": 16.38,
+        "ecpc": 1.02,
+        "view_count": 1388758,
+        "click_count": 22414
+      },
+      {
+        "key": "辽宁",
+        "ctr": 1.49,
+        "cost": 48770.45,
+        "ecpm": 17.72,
+        "ecpc": 1.19,
+        "view_count": 2752527,
+        "click_count": 41087
+      },
+      {
+        "key": "吉林",
+        "ctr": 1.54,
+        "cost": 29666.23,
+        "ecpm": 17.9,
+        "ecpc": 1.16,
+        "view_count": 1656897,
+        "click_count": 25479
+      },
+      {
+        "key": "黑龙江",
+        "ctr": 1.65,
+        "cost": 35634.37,
+        "ecpm": 18.64,
+        "ecpc": 1.13,
+        "view_count": 1911944,
+        "click_count": 31561
+      },
+      {
+        "key": "上海",
+        "ctr": 1.4,
+        "cost": 47181.5,
+        "ecpm": 20.82,
+        "ecpc": 1.49,
+        "view_count": 2266029,
+        "click_count": 31631
+      },
+      {
+        "key": "江苏",
+        "ctr": 1.41,
+        "cost": 139532.24,
+        "ecpm": 18.71,
+        "ecpc": 1.33,
+        "view_count": 7455961,
+        "click_count": 105142
+      },
+      {
+        "key": "浙江",
+        "ctr": 1.67,
+        "cost": 128247.7,
+        "ecpm": 20.87,
+        "ecpc": 1.25,
+        "view_count": 6144189,
+        "click_count": 102762
+      },
+      {
+        "key": "安徽",
+        "ctr": 1.49,
+        "cost": 80715.96,
+        "ecpm": 20.06,
+        "ecpc": 1.34,
+        "view_count": 4024134,
+        "click_count": 60079
+      },
+      {
+        "key": "福建",
+        "ctr": 1.7,
+        "cost": 75094.08,
+        "ecpm": 22.41,
+        "ecpc": 1.31,
+        "view_count": 3351449,
+        "click_count": 57128
+      },
+      {
+        "key": "江西",
+        "ctr": 1.37,
+        "cost": 55110.46,
+        "ecpm": 17.43,
+        "ecpc": 1.27,
+        "view_count": 3161092,
+        "click_count": 43226
+      },
+      {
+        "key": "山东",
+        "ctr": 1.47,
+        "cost": 120541.62,
+        "ecpm": 16.84,
+        "ecpc": 1.15,
+        "view_count": 7160067,
+        "click_count": 105004
+      },
+      {
+        "key": "河南",
+        "ctr": 1.42,
+        "cost": 113914.15,
+        "ecpm": 15.67,
+        "ecpc": 1.1,
+        "view_count": 7269494,
+        "click_count": 103577
+      },
+      {
+        "key": "湖北",
+        "ctr": 1.46,
+        "cost": 87310.56,
+        "ecpm": 20,
+        "ecpc": 1.37,
+        "view_count": 4365880,
+        "click_count": 63639
+      },
+      {
+        "key": "湖南",
+        "ctr": 1.45,
+        "cost": 65436.41,
+        "ecpm": 16.86,
+        "ecpc": 1.16,
+        "view_count": 3880683,
+        "click_count": 56306
+      },
+      {
+        "key": "广东",
+        "ctr": 1.57,
+        "cost": 275475.44,
+        "ecpm": 19.52,
+        "ecpc": 1.24,
+        "view_count": 14109457,
+        "click_count": 221544
+      },
+      {
+        "key": "广西",
+        "ctr": 1.3,
+        "cost": 71610.57,
+        "ecpm": 16.62,
+        "ecpc": 1.28,
+        "view_count": 4307710,
+        "click_count": 55936
+      },
+      {
+        "key": "海南",
+        "ctr": 1.68,
+        "cost": 14039.43,
+        "ecpm": 20,
+        "ecpc": 1.19,
+        "view_count": 701964,
+        "click_count": 11827
+      },
+      {
+        "key": "重庆",
+        "ctr": 1.55,
+        "cost": 53702.32,
+        "ecpm": 19.98,
+        "ecpc": 1.29,
+        "view_count": 2688255,
+        "click_count": 41643
+      },
+      {
+        "key": "四川",
+        "ctr": 1.5,
+        "cost": 124134.36,
+        "ecpm": 20.74,
+        "ecpc": 1.38,
+        "view_count": 5985912,
+        "click_count": 89994
+      },
+      {
+        "key": "贵州",
+        "ctr": 1.48,
+        "cost": 49709.79,
+        "ecpm": 19.23,
+        "ecpc": 1.3,
+        "view_count": 2585416,
+        "click_count": 38234
+      },
+      {
+        "key": "云南",
+        "ctr": 1.32,
+        "cost": 41576.11,
+        "ecpm": 17.02,
+        "ecpc": 1.29,
+        "view_count": 2443182,
+        "click_count": 32324
+      },
+      {
+        "key": "西藏",
+        "ctr": 1.49,
+        "cost": 1907.3,
+        "ecpm": 19.2,
+        "ecpc": 1.29,
+        "view_count": 99320,
+        "click_count": 1482
+      },
+      {
+        "key": "陕西",
+        "ctr": 1.37,
+        "cost": 37459.37,
+        "ecpm": 15.39,
+        "ecpc": 1.12,
+        "view_count": 2434783,
+        "click_count": 33339
+      },
+      {
+        "key": "甘肃",
+        "ctr": 1.32,
+        "cost": 21933.55,
+        "ecpm": 15.08,
+        "ecpc": 1.14,
+        "view_count": 1454530,
+        "click_count": 19195
+      },
+      {
+        "key": "青海",
+        "ctr": 1.34,
+        "cost": 4367.18,
+        "ecpm": 15.03,
+        "ecpc": 1.12,
+        "view_count": 290589,
+        "click_count": 3885
+      },
+      {
+        "key": "宁夏",
+        "ctr": 1.44,
+        "cost": 6099.18,
+        "ecpm": 16.03,
+        "ecpc": 1.12,
+        "view_count": 380523,
+        "click_count": 5465
+      },
+      {
+        "key": "新疆",
+        "ctr": 1.51,
+        "cost": 20005.52,
+        "ecpm": 16.61,
+        "ecpc": 1.1,
+        "view_count": 1204321,
+        "click_count": 18149
+      },
+      {
+        "key": "台湾",
+        "ctr": 1.72,
+        "cost": 414.62,
+        "ecpm": 20.45,
+        "ecpc": 1.19,
+        "view_count": 20277,
+        "click_count": 348
+      },
+      {
+        "key": "香港",
+        "ctr": 2.08,
+        "cost": 948.83,
+        "ecpm": 24.97,
+        "ecpc": 1.2,
+        "view_count": 37995,
+        "click_count": 791
+      },
+      {
+        "key": "澳门",
+        "ctr": 1.9,
+        "cost": 285.13,
+        "ecpm": 25.43,
+        "ecpc": 1.34,
+        "view_count": 11214,
+        "click_count": 213
+      },
+      {
+        "key": "中国未识别地区",
+        "ctr": 1.31,
+        "cost": 55658.53,
+        "ecpm": 14.04,
+        "ecpc": 1.07,
+        "view_count": 3965268,
+        "click_count": 52075
+      },
+      {
+        "key": "国外",
+        "ctr": 1.73,
+        "cost": 13373.73,
+        "ecpm": 23.53,
+        "ecpc": 1.36,
+        "view_count": 568381,
+        "click_count": 9829
+      }
+    ],
+    "age": [
+      {
+        "key": "未知年龄",
+        "ctr": 2.85,
+        "cost": 3206.91,
+        "ecpm": 14.78,
+        "ecpc": 0.52,
+        "view_count": 217039,
+        "click_count": 6178
+      },
+      {
+        "key": "18岁以下",
+        "ctr": 2.17,
+        "cost": 255149.78,
+        "ecpm": 18.25,
+        "ecpc": 0.84,
+        "view_count": 13983776,
+        "click_count": 303532
+      },
+      {
+        "key": "18-23岁",
+        "ctr": 1.45,
+        "cost": 1250359.45,
+        "ecpm": 22.43,
+        "ecpc": 1.55,
+        "view_count": 55746847,
+        "click_count": 807111
+      },
+      {
+        "key": "24-30岁",
+        "ctr": 1.22,
+        "cost": 258599.68,
+        "ecpm": 12.94,
+        "ecpc": 1.06,
+        "view_count": 19989519,
+        "click_count": 244348
+      },
+      {
+        "key": "31-40岁",
+        "ctr": 1.3,
+        "cost": 91446.56,
+        "ecpm": 10.16,
+        "ecpc": 0.78,
+        "view_count": 9004817,
+        "click_count": 116842
+      },
+      {
+        "key": "41-50岁",
+        "ctr": 1.33,
+        "cost": 39244.63,
+        "ecpm": 10.99,
+        "ecpc": 0.82,
+        "view_count": 3572236,
+        "click_count": 47680
+      },
+      {
+        "key": "50岁以上",
+        "ctr": 1.65,
+        "cost": 6058.21,
+        "ecpm": 13.15,
+        "ecpc": 0.8,
+        "view_count": 460540,
+        "click_count": 7580
+      }
+    ],
+    "list": [
+      {
+        "key": "2016-04-30",
+        "ctr": 1.43,
+        "cost": 79693.76,
+        "ecpm": 15.08,
+        "ecpc": 1.05,
+        "view_count": 5283199,
+        "click_count": 75677
+      },
+      {
+        "key": "2016-05-01",
+        "ctr": 1.29,
+        "cost": 79284.41,
+        "ecpm": 15.3,
+        "ecpc": 1.18,
+        "view_count": 5183573,
+        "click_count": 67075
+      },
+      {
+        "key": "2016-05-02",
+        "ctr": 1.24,
+        "cost": 76893.08,
+        "ecpm": 14.84,
+        "ecpc": 1.2,
+        "view_count": 5181589,
+        "click_count": 64331
+      },
+      {
+        "key": "2016-05-03",
+        "ctr": 1.13,
+        "cost": 63724.86,
+        "ecpm": 14.2,
+        "ecpc": 1.25,
+        "view_count": 4488206,
+        "click_count": 50887
+      },
+      {
+        "key": "2016-05-04",
+        "ctr": 1.17,
+        "cost": 69236.83,
+        "ecpm": 14.94,
+        "ecpc": 1.27,
+        "view_count": 4633935,
+        "click_count": 54410
+      },
+      {
+        "key": "2016-05-11",
+        "ctr": 1.32,
+        "cost": 70091.73,
+        "ecpm": 14.67,
+        "ecpc": 1.11,
+        "view_count": 4777893,
+        "click_count": 63140
+      },
+      {
+        "key": "2016-05-12",
+        "ctr": 1.39,
+        "cost": 61052.28,
+        "ecpm": 12.55,
+        "ecpc": 0.9,
+        "view_count": 4865368,
+        "click_count": 67864
+      },
+      {
+        "key": "2016-05-13",
+        "ctr": 1.67,
+        "cost": 95585.69,
+        "ecpm": 16.22,
+        "ecpc": 0.97,
+        "view_count": 5893690,
+        "click_count": 98636
+      },
+      {
+        "key": "2016-05-14",
+        "ctr": 1.91,
+        "cost": 172307.51,
+        "ecpm": 19.99,
+        "ecpc": 1.05,
+        "view_count": 8620146,
+        "click_count": 164519
+      },
+      {
+        "key": "2016-05-15",
+        "ctr": 1.89,
+        "cost": 149324.8,
+        "ecpm": 19.7,
+        "ecpc": 1.04,
+        "view_count": 7580209,
+        "click_count": 143075
+      },
+      {
+        "key": "2016-05-16",
+        "ctr": 1.65,
+        "cost": 112115.92,
+        "ecpm": 18.91,
+        "ecpc": 1.15,
+        "view_count": 5929055,
+        "click_count": 97756
+      },
+      {
+        "key": "2016-05-17",
+        "ctr": 1.68,
+        "cost": 112969.2,
+        "ecpm": 19.33,
+        "ecpc": 1.15,
+        "view_count": 5845528,
+        "click_count": 98148
+      },
+      {
+        "key": "2016-05-18",
+        "ctr": 1.76,
+        "cost": 98251.95,
+        "ecpm": 20.99,
+        "ecpc": 1.19,
+        "view_count": 4681255,
+        "click_count": 82476
+      },
+      {
+        "key": "2016-05-19",
+        "ctr": 1.53,
+        "cost": 102869.57,
+        "ecpm": 20.71,
+        "ecpc": 1.35,
+        "view_count": 4968198,
+        "click_count": 76100
+      },
+      {
+        "key": "2016-05-20",
+        "ctr": 1.28,
+        "cost": 97793.26,
+        "ecpm": 19.56,
+        "ecpc": 1.53,
+        "view_count": 5000253,
+        "click_count": 63953
+      },
+      {
+        "key": "2016-05-21",
+        "ctr": 1.34,
+        "cost": 129168.95,
+        "ecpm": 22.06,
+        "ecpc": 1.65,
+        "view_count": 5854775,
+        "click_count": 78445
+      },
+      {
+        "key": "2016-05-22",
+        "ctr": 1.33,
+        "cost": 126710.24,
+        "ecpm": 22.91,
+        "ecpc": 1.72,
+        "view_count": 5529943,
+        "click_count": 73536
+      },
+      {
+        "key": "2016-05-23",
+        "ctr": 1.28,
+        "cost": 104193.67,
+        "ecpm": 23.32,
+        "ecpc": 1.82,
+        "view_count": 4468078,
+        "click_count": 57337
+      },
+      {
+        "key": "2016-05-24",
+        "ctr": 1.33,
+        "cost": 102797.56,
+        "ecpm": 24.53,
+        "ecpc": 1.84,
+        "view_count": 4189926,
+        "click_count": 55906
+      }
+    ]
+  }
+}
